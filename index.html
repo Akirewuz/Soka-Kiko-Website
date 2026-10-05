@@ -35,22 +35,16 @@
   #icons{
     position:absolute;
     top:10px; left:10px;
-    display:flex;
-    flex-direction:column;
-    flex-wrap:wrap;
-    gap:6px;
+    display:flex; flex-direction:column;
+    flex-wrap:wrap; gap:6px;
     max-height:calc(100% - 20px);
     align-content:flex-start;
   }
   .dicon{
-    width:78px;
-    padding:6px 4px;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    gap:4px;
-    text-align:center;
-    color:#fff;
+    width:78px; padding:6px 4px;
+    display:flex; flex-direction:column;
+    align-items:center; gap:4px;
+    text-align:center; color:#fff;
     text-shadow:1px 1px 0 #000;
     cursor:default;
     border:1px dotted transparent;
@@ -60,11 +54,9 @@
   .dicon.sel .lbl{ background:var(--navy); outline:1px dotted #fff; }
 
   .window{
-    position:absolute;
-    display:none;
+    position:absolute; display:none;
     flex-direction:column;
-    background:var(--face);
-    padding:3px;
+    background:var(--face); padding:3px;
     max-height:calc(100% - 16px);
     box-shadow:
       inset -1px -1px var(--dark),
@@ -78,37 +70,22 @@
     max-height:100% !important;
   }
   .titlebar{
-    display:flex;
-    align-items:center;
-    gap:4px;
-    height:20px;
-    padding:0 2px 0 3px;
+    display:flex; align-items:center; gap:4px;
+    height:20px; padding:0 2px 0 3px;
     background:linear-gradient(90deg,var(--shadow),#b5b5b5);
-    color:#d0d0d0;
-    font-weight:bold;
-    font-size:11px;
-    flex:0 0 auto;
-    cursor:default;
-    touch-action:none;
+    color:#d0d0d0; font-weight:bold; font-size:11px;
+    flex:0 0 auto; cursor:default; touch-action:none;
   }
   .window.active .titlebar{
     background:linear-gradient(90deg,var(--navy),var(--blue));
     color:#fff;
   }
-  .tb-title{
-    white-space:nowrap;
-    overflow:hidden;
-    text-overflow:ellipsis;
-    padding-left:2px;
-  }
+  .tb-title{ white-space:nowrap; overflow:hidden; text-overflow:ellipsis; padding-left:2px; }
   .tb-btns{ display:flex; gap:2px; margin-left:auto; }
   .tb-btns button{
-    width:16px; height:14px;
-    padding:0;
+    width:16px; height:14px; padding:0;
     display:grid; place-items:center;
-    background:var(--face);
-    border:0;
-    color:#000;
+    background:var(--face); border:0; color:#000;
     cursor:default;
     box-shadow:
       inset -1px -1px var(--dark),
@@ -124,12 +101,8 @@
       inset -2px -2px var(--light);
   }
   .tb-btns button svg{ display:block; }
-  .win-body{
-    flex:1 1 auto;
-    overflow:auto;
-    padding:8px;
-    user-select:text;
-  }
+  .win-body{ flex:1 1 auto; overflow:auto; padding:8px; user-select:text; }
+
   .sunken{
     background:#fff;
     box-shadow:
@@ -139,12 +112,8 @@
       inset -2px -2px var(--light);
   }
   .btn{
-    font-family:inherit;
-    font-size:12px;
-    min-width:75px;
-    padding:4px 12px;
-    background:var(--face);
-    border:0;
+    font-family:inherit; font-size:12px; min-width:75px;
+    padding:4px 12px; background:var(--face); border:0;
     cursor:default;
     box-shadow:
       inset -1px -1px var(--dark),
@@ -168,12 +137,8 @@
   .field{ display:flex; gap:6px; align-items:center; margin-bottom:6px; }
   .field label{ flex:0 0 62px; }
   input[type=text], textarea{
-    font-family:inherit;
-    font-size:12px;
-    width:100%;
-    padding:3px 4px;
-    border:0;
-    background:#fff;
+    font-family:inherit; font-size:12px;
+    width:100%; padding:3px 4px; border:0; background:#fff;
     box-shadow:
       inset  1px  1px var(--shadow),
       inset -1px -1px var(--white),
@@ -190,11 +155,7 @@
   .srv .g{ font-size:18px; line-height:1.2; }
   .srv b{ display:block; }
   .srv small{ color:#404040; }
-  .gal{
-    display:grid;
-    grid-template-columns:repeat(auto-fill,minmax(96px,1fr));
-    gap:8px;
-  }
+  .gal{ display:grid; grid-template-columns:repeat(auto-fill,minmax(96px,1fr)); gap:8px; }
   .art{ text-align:center; }
   .art .thumb{
     height:76px;
@@ -213,26 +174,19 @@
   .win-link:visited{ color:#551a8b; }
   .win-link:hover{ color:var(--blue); }
   #taskbar{
-    position:fixed;
-    left:0; right:0; bottom:0;
+    position:fixed; left:0; right:0; bottom:0;
     height:var(--taskbar-h);
     background:var(--face);
-    display:flex;
-    align-items:center;
-    gap:3px;
+    display:flex; align-items:center; gap:3px;
     padding:2px 3px;
     box-shadow: inset 0 1px var(--white), inset 0 2px var(--light);
     z-index:9000;
   }
   #startbtn{
     display:flex; align-items:center; gap:5px;
-    font-family:inherit;
-    font-size:12px;
-    font-weight:bold;
+    font-family:inherit; font-size:12px; font-weight:bold;
     padding:3px 7px 3px 4px;
-    background:var(--face);
-    border:0;
-    cursor:default;
+    background:var(--face); border:0; cursor:default;
     box-shadow:
       inset -1px -1px var(--dark),
       inset  1px  1px var(--white),
@@ -258,25 +212,13 @@
     width:3px; height:22px; margin:0 2px;
     box-shadow: inset 1px 0 var(--shadow), inset 2px 0 var(--white);
   }
-  #tasks{
-    display:flex;
-    gap:3px;
-    flex:1 1 auto;
-    overflow:hidden;
-  }
+  #tasks{ display:flex; gap:3px; flex:1 1 auto; overflow:hidden; }
   .taskbtn{
-    font-family:inherit;
-    font-size:11px;
-    max-width:170px;
-    min-width:120px;
-    padding:3px 8px;
-    text-align:left;
-    background:var(--face);
-    border:0;
-    cursor:default;
-    white-space:nowrap;
-    overflow:hidden;
-    text-overflow:ellipsis;
+    font-family:inherit; font-size:11px;
+    max-width:170px; min-width:120px;
+    padding:3px 8px; text-align:left;
+    background:var(--face); border:0; cursor:default;
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
     box-shadow:
       inset -1px -1px var(--dark),
       inset  1px  1px var(--white),
@@ -301,10 +243,8 @@
   #startmenu{
     position:fixed;
     left:3px; bottom:calc(var(--taskbar-h) + 2px);
-    width:216px;
-    display:none;
-    background:var(--face);
-    padding:3px;
+    width:216px; display:none;
+    background:var(--face); padding:3px;
     z-index:9500;
     box-shadow:
       inset -1px -1px var(--dark),
@@ -319,18 +259,15 @@
     color:#c8c8c8;
     writing-mode:vertical-rl;
     transform:rotate(180deg);
-    display:grid;
-    place-items:center;
-    font-weight:bold;
-    font-size:14px;
+    display:grid; place-items:center;
+    font-weight:bold; font-size:14px;
     letter-spacing:1px;
     padding:8px 0;
   }
   .sm-items{ flex:1 1 auto; padding:2px 0; }
   .sm-item{
     display:flex; align-items:center; gap:9px;
-    padding:6px 10px;
-    font-size:12px;
+    padding:6px 10px; font-size:12px;
     cursor:default;
   }
   .sm-item .g{ font-size:16px; width:18px; text-align:center; }
@@ -340,29 +277,60 @@
     border-top:1px solid var(--shadow);
     border-bottom:1px solid var(--white);
   }
+
+  /* ============ MENU DE CONTEXTO ============ */
+  #ctxMenu{
+    position:fixed;
+    display:none;
+    min-width:170px;
+    background:var(--face);
+    padding:2px;
+    z-index:99999;
+    box-shadow:
+      inset -1px -1px var(--dark),
+      inset  1px  1px var(--light),
+      inset -2px -2px var(--shadow),
+      inset  2px  2px var(--white),
+      2px 2px 0 rgba(0,0,0,.35);
+  }
+  .ctx-item{
+    display:flex; align-items:center; gap:8px;
+    padding:4px 20px 4px 6px;
+    font-size:12px;
+    cursor:default;
+    white-space:nowrap;
+  }
+  .ctx-item .ic{ width:16px; text-align:center; font-size:13px; }
+  .ctx-item .lbl{ flex:1 1 auto; }
+  .ctx-item .sc{ margin-left:20px; color:#606060; font-size:11px; }
+  .ctx-item:hover{ background:var(--navy); color:#fff; }
+  .ctx-item:hover .sc{ color:#d0d0d0; }
+  .ctx-item.disabled{ color:#808080; text-shadow:1px 1px var(--white); }
+  .ctx-item.disabled:hover{ background:transparent; color:#808080; text-shadow:1px 1px var(--white); }
+  .ctx-sep{
+    height:0; margin:3px 2px;
+    border-top:1px solid var(--shadow);
+    border-bottom:1px solid var(--white);
+  }
+  .ctx-item.bold .lbl{ font-weight:bold; }
+
   #shutdown{
     position:fixed; inset:0;
-    background:#000;
-    display:none;
-    place-items:center;
-    text-align:center;
+    background:#000; display:none;
+    place-items:center; text-align:center;
     color:#ffb000;
     font-family:'Courier New',monospace;
     font-size:clamp(18px,4vw,30px);
-    z-index:99999;
-    cursor:pointer;
-    padding:20px;
+    z-index:99999; cursor:pointer; padding:20px;
   }
   #shutdown.on{ display:grid; }
   #shutdown small{ display:block; margin-top:24px; font-size:14px; color:#8a5f00; line-height:1.6; }
 
   #moonEgg{
     position:fixed; inset:0;
-    background:#000;
-    display:none;
+    background:#000; display:none;
     place-items:center;
-    z-index:100000;
-    cursor:pointer;
+    z-index:100000; cursor:pointer;
     animation: moonFadeIn .5s ease;
   }
   #moonEgg.on{ display:grid; }
@@ -372,7 +340,7 @@
     object-fit: contain;
     animation: moonFloat 3s ease-in-out infinite;
   }
-  @keyframes moonFadeIn{ from{ opacity:0; } to{ opacity:1; } }
+  @keyframes moonFadeIn{ from{opacity:0;} to{opacity:1;} }
   @keyframes moonFloat{
     0%,100%{ transform: translateY(0) rotate(-2deg); }
     50%    { transform: translateY(-8px) rotate(2deg); }
@@ -381,10 +349,8 @@
   #animeEgg{
     position:fixed; inset:0;
     background: rgba(0,0,0,.55);
-    display:none;
-    place-items:center;
-    z-index:99997;
-    padding:20px;
+    display:none; place-items:center;
+    z-index:99997; padding:20px;
   }
   #animeEgg.on{ display:grid; }
   .anime-dialog{
@@ -407,16 +373,12 @@
   #adoEgg{
     position:fixed; inset:0;
     background: rgba(0,0,0,.85);
-    display:none;
-    place-items:center;
-    z-index:100001;
-    cursor:pointer;
-    padding:20px;
+    display:none; place-items:center;
+    z-index:100001; cursor:pointer; padding:20px;
   }
   #adoEgg.on{ display:grid; }
   #adoEgg img{
-    max-width:70vmin;
-    max-height:70vmin;
+    max-width:70vmin; max-height:70vmin;
     object-fit: contain;
     animation: popIn .4s ease;
   }
@@ -424,8 +386,7 @@
   .popup-overlay{
     position:fixed; inset:0;
     background: rgba(0,0,0,.75);
-    display:none;
-    place-items:center;
+    display:none; place-items:center;
     padding:20px;
   }
   .popup-overlay.on{ display:grid; }
@@ -443,8 +404,7 @@
 
   #uwuEgg{ z-index:100004; }
   #uwuEgg .uwu-emoji{
-    font-size: 64px;
-    text-align: center;
+    font-size: 64px; text-align: center;
     margin-bottom: 8px;
     animation: uwuBounce 1s ease-in-out infinite;
   }
@@ -453,29 +413,34 @@
     50%    { transform: translateY(-8px); }
   }
 
+  #animePopup{ z-index:100010; }
+  #animePopup .ae-emoji{
+    font-size: 72px; text-align: center;
+    margin-bottom: 10px;
+    animation: aePulse 1.2s ease-in-out infinite;
+  }
+  @keyframes aePulse{
+    0%,100%{ transform: scale(1); }
+    50%    { transform: scale(1.1); }
+  }
+  #animePopup .ae-title{ text-align: center; font-size: 18px; font-weight: bold; margin-bottom: 8px; }
+  #animePopup .ae-msg{ text-align: center; color: #303030; }
+  #animePopup .ae-hint{ text-align: center; font-size: 10px; color: #808080; margin-top: 12px; }
+
   #bsod{
     position:fixed; inset:0;
-    background: #0000AA;
-    color: #fff;
-    display:none;
-    place-items:center;
-    text-align:center;
+    background: #0000AA; color: #fff;
+    display:none; place-items:center; text-align:center;
     font-family: 'Courier New', monospace;
     font-size: 16px;
-    z-index: 100003;
-    padding: 40px;
-    cursor: pointer;
+    z-index: 100003; padding: 40px; cursor: pointer;
   }
   #bsod.on{ display: grid; }
   #bsod small{ display:block; margin-top: 20px; font-size: 12px; opacity: .7; }
 
-  #yumeBody .yume-perso{
-    display:flex; gap:12px; align-items:flex-start;
-    margin-bottom:12px;
-  }
+  #yumeBody .yume-perso{ display:flex; gap:12px; align-items:flex-start; margin-bottom:12px; }
   #yumeBody .yume-avatar{
-    flex:0 0 auto;
-    width:88px; height:88px;
+    flex:0 0 auto; width:88px; height:88px;
     background:#fff;
     box-shadow:
       inset  1px  1px var(--shadow),
@@ -484,30 +449,13 @@
       inset -2px -2px var(--light);
     overflow: hidden;
   }
-  #yumeBody .yume-avatar img{
-    width:100%; height:100%; object-fit: cover; display: block;
-  }
-  #yumeBody .yume-nome{
-    font-weight:bold;
-    margin:0 0 4px;
-  }
-  #yumeBody .yume-opcoes{
-    display:flex; flex-direction:column; gap:6px;
-    margin-top:8px;
-  }
-  #yumeBody .yume-opcoes .btn{
-    text-align:left;
-    min-width:0;
-    width:100%;
-  }
-  #yumeBody .yume-inv{
-    display:flex; gap:6px; flex-wrap:wrap;
-    margin-top:8px;
-  }
+  #yumeBody .yume-avatar img{ width:100%; height:100%; object-fit: cover; display: block; }
+  #yumeBody .yume-nome{ font-weight:bold; margin:0 0 4px; }
+  #yumeBody .yume-opcoes{ display:flex; flex-direction:column; gap:6px; margin-top:8px; }
+  #yumeBody .yume-opcoes .btn{ text-align:left; min-width:0; width:100%; }
+  #yumeBody .yume-inv{ display:flex; gap:6px; flex-wrap:wrap; margin-top:8px; }
   #yumeBody .yume-inv span{
-    background:#fff;
-    padding:2px 8px;
-    font-weight:bold;
+    background:#fff; padding:2px 8px; font-weight:bold;
     box-shadow:
       inset  1px  1px var(--shadow),
       inset -1px -1px var(--white),
@@ -515,10 +463,383 @@
       inset -2px -2px var(--light);
   }
 
+  /* ============ SŌKAGLE ============ */
+  #sokagleToolbar{
+    display:flex; gap:3px; align-items:center;
+    padding:4px; background:var(--face);
+    box-shadow:
+      inset  1px  1px var(--white),
+      inset -1px -1px var(--shadow);
+    flex:0 0 auto;
+  }
+  #sokagleToolbar button{
+    width:24px; height:22px;
+    display:grid; place-items:center;
+    background:var(--face); border:0; cursor:default;
+    font-family:inherit; font-size:13px;
+    box-shadow:
+      inset -1px -1px var(--dark),
+      inset  1px  1px var(--white),
+      inset -2px -2px var(--shadow),
+      inset  2px  2px var(--light);
+  }
+  #sokagleToolbar button:active{
+    box-shadow:
+      inset  1px  1px var(--dark),
+      inset -1px -1px var(--white),
+      inset  2px  2px var(--shadow),
+      inset -2px -2px var(--light);
+  }
+  #sokagleUrl{
+    flex:1 1 auto;
+    font-family:inherit; font-size:12px;
+    padding:3px 4px; background:#fff; border:0;
+    box-shadow:
+      inset  1px  1px var(--shadow),
+      inset -1px -1px var(--white),
+      inset  2px  2px var(--dark),
+      inset -2px -2px var(--light);
+  }
+  #sokagleContent{
+    flex:1 1 auto;
+    overflow:auto;
+    padding:20px;
+    background:#fff;
+    user-select:text;
+  }
+  .sk-home{ text-align:center; padding-top:40px; }
+  .sk-logo{ font-size: 56px; font-weight: bold; margin-bottom: 6px; letter-spacing: -2px; }
+  .sk-logo .l1{ color:#4285F4; }
+  .sk-logo .l2{ color:#EA4335; }
+  .sk-logo .l3{ color:#FBBC05; }
+  .sk-logo .l4{ color:#4285F4; }
+  .sk-logo .l5{ color:#34A853; }
+  .sk-logo .l6{ color:#EA4335; }
+  .sk-logo .l7{ color:#4285F4; }
+  .sk-sub{ font-size: 11px; color: #606060; margin-bottom: 24px; }
+  .sk-search{ display:flex; gap:6px; max-width: 460px; margin: 0 auto 8px; }
+  .sk-search input{
+    flex: 1 1 auto; padding: 6px 10px; font-size: 14px;
+    border-radius: 2px; border: 1px solid #808080;
+    box-shadow: inset 1px 1px 2px rgba(0,0,0,.2);
+    font-family: inherit;
+  }
+  .sk-search button{
+    padding: 6px 16px; font-family: inherit; font-size: 12px;
+    border-radius: 2px; border: 1px solid #808080;
+    background: #e8e8e8; cursor: default;
+  }
+  .sk-lucky{ font-size: 12px; color: var(--navy); text-decoration: underline; cursor: pointer; }
+  .sk-results-header{
+    border-bottom: 1px solid #d0d0d0;
+    padding-bottom: 8px; margin-bottom: 14px;
+    font-size: 11px; color: #606060;
+  }
+  .sk-result{ margin-bottom: 22px; }
+  .sk-result .url{ color: #006621; font-size: 12px; margin-bottom: 2px; }
+  .sk-result .title{ color: #1a0dab; font-size: 16px; margin: 0 0 4px; cursor: pointer; }
+  .sk-result .title:hover{ text-decoration: underline; }
+  .sk-result .snippet{ font-size: 12px; color: #545454; line-height: 1.5; margin: 0; }
+
+  /* ============ SITES FICTÍCIOS DO SŌKAGLE ============ */
+  .st-page{background:#f9f9f9;min-height:100%}
+  .st-head{background:#fff;padding:12px 20px;border-bottom:1px solid #e0e0e0;display:flex;align-items:center;gap:20px}
+  .st-logo{font-size:20px;font-weight:bold;color:#f00;white-space:nowrap;cursor:pointer}
+  .st-logo span{color:#000}
+  .st-search{flex:1;display:flex;gap:6px;max-width:480px}
+  .st-search input{flex:1;padding:6px 14px;border:1px solid #ccc;border-radius:18px;font-size:13px;font-family:inherit}
+  .st-search button{padding:6px 14px;border:0;background:#f0f0f0;border-radius:18px;cursor:pointer;font-size:13px}
+  .st-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:16px;padding:20px}
+  .st-card{cursor:pointer}
+  .st-thumb{width:100%;aspect-ratio:16/9;border-radius:6px;display:grid;place-items:center;font-size:34px;transition:transform .15s;color:#fff}
+  .st-card:hover .st-thumb{transform:scale(1.03)}
+  .st-title{font-size:13px;font-weight:bold;margin:8px 0 3px}
+  .st-meta{font-size:11px;color:#606060;margin:0}
+  .st-video{max-width:900px;margin:0 auto;padding:20px}
+  .st-player{aspect-ratio:16/9;background:#000;border-radius:8px;display:grid;place-items:center;color:#fff;margin-bottom:16px;position:relative;overflow:hidden}
+  .st-player-icon{font-size:130px}
+  .st-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:80px;height:80px;background:rgba(255,255,255,.25);border-radius:50%;display:grid;place-items:center;font-size:36px;cursor:pointer}
+  .st-bar{position:absolute;bottom:16px;left:16px;right:16px;height:5px;background:rgba(255,255,255,.2);border-radius:3px}
+  .st-bar-fill{width:30%;height:100%;background:#f00;border-radius:3px}
+
+  .sp-wrap{background:#fff;min-height:100%}
+  .sp-head{background:#f8f9fa;border-bottom:1px solid #a2a9b1;padding:14px 40px;display:flex;align-items:center;gap:20px}
+  .sp-head-logo{font-size:20px;font-family:Georgia,serif;font-weight:bold;cursor:pointer}
+  .sp-head input{flex:1;max-width:360px;padding:6px 12px;border:1px solid #a2a9b1;font-size:13px;font-family:inherit}
+  .sp-page{background:#fff;padding:20px 40px;max-width:900px;margin:0 auto}
+  .sp-page h1{font-family:Georgia,serif;font-size:28px;border-bottom:1px solid #a2a9b1;padding-bottom:6px;margin-bottom:16px}
+  .sp-page h2{font-family:Georgia,serif;font-size:22px;border-bottom:1px solid #a2a9b1;padding-bottom:4px;margin:24px 0 12px}
+  .sp-page p{font-size:14px;line-height:1.7;color:#202122;margin-bottom:12px}
+  .sp-info{float:right;width:260px;background:#f8f9fa;border:1px solid #a2a9b1;padding:12px;margin:0 0 16px 20px;font-size:12px}
+  .sp-info h3{font-size:14px;text-align:center;margin:0 0 12px;border-bottom:1px solid #a2a9b1;padding-bottom:6px}
+  .sp-info .thumb{height:140px;background:linear-gradient(135deg,#ccc,#999);display:grid;place-items:center;font-size:44px;margin-bottom:10px;border-radius:2px}
+  .sp-info p{font-size:12px}
+
+  .sf-page{background:#141414;color:#fff;min-height:100%;padding:20px 0}
+  .sf-head{padding:0 30px 20px}
+  .sf-logo{font-size:28px;font-weight:bold;color:#e50914;letter-spacing:3px}
+  .sf-row{margin-bottom:30px;padding:0 30px}
+  .sf-row h3{font-size:16px;margin:0 0 12px;color:#e5e5e5}
+  .sf-carousel{display:flex;gap:10px;overflow-x:auto;padding-bottom:10px}
+  .sf-card{flex:0 0 auto;width:170px;height:96px;border-radius:4px;display:grid;place-items:center;font-size:30px;cursor:pointer;transition:transform .15s;position:relative;color:#fff}
+  .sf-card:hover{transform:scale(1.08);z-index:2}
+  .sf-card span{position:absolute;bottom:4px;left:6px;font-size:10px;opacity:.9;right:6px;text-align:left}
+
+  .sfo-page{background:#dae0e6;padding:20px;min-height:100%}
+  .sfo-head{background:#fff;padding:14px 20px;border-radius:4px;margin-bottom:14px;display:flex;align-items:center;gap:14px;max-width:720px}
+  .sfo-logo{font-size:20px;font-weight:bold;color:#ff4500}
+  .sfo-post{background:#fff;border-radius:4px;padding:12px;margin-bottom:10px;max-width:720px;display:flex;gap:12px}
+  .sfo-votes{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:11px;font-weight:bold;flex:0 0 auto}
+  .sfo-votes .up{color:#ff4500;font-size:18px;cursor:pointer}
+  .sfo-post-body{flex:1}
+  .sfo-post-body h4{margin:0 0 6px;font-size:15px}
+  .sfo-post-body p{margin:0 0 8px;font-size:13px;color:#303030;line-height:1.5}
+  .sfo-post-body .meta{font-size:11px;color:#7c7c7c}
+
+  .gr-sitename{display:flex;align-items:center;gap:8px;font-size:12px;color:#202124;margin-bottom:3px}
+  .gr-fav{width:20px;height:20px;border-radius:50%;background:#f0f0f0;display:grid;place-items:center;font-size:11px;color:#303030}
+  .gr-url{color:#4d5156;font-size:12px;margin-bottom:4px}
+  .gr-title{color:#1a0dab;font-size:18px;margin:0 0 4px;cursor:pointer}
+  .gr-title:hover{text-decoration:underline}
+  .gr-snippet{color:#4d5156;font-size:13px;line-height:1.55;margin:0}
+  .gr-sitelinks{display:flex;flex-wrap:wrap;gap:14px;margin-top:8px}
+  .gr-sitelinks a{color:#1a0dab;font-size:13px;cursor:pointer;text-decoration:none}
+  .gr-sitelinks a:hover{text-decoration:underline}
+  .gr-widget{background:#f8f9fa;border:1px solid #dadce0;border-radius:8px;padding:12px;margin:10px 0;display:flex;gap:12px;align-items:center}
+  .gr-widget .thumb{width:110px;height:64px;border-radius:6px;display:grid;place-items:center;font-size:26px;flex:0 0 auto}
+  .gr-widget h4{margin:0 0 4px;font-size:14px}
+  .gr-widget p{margin:0;font-size:12px;color:#5f6368}
+  .gr-result{padding:16px 0;border-bottom:1px solid #eee}
+
+  /* ============ BOOT SCREEN ============ */
+  #bootScreen{
+    position:fixed; inset:0; background:#000; z-index:999999;
+    font-family:'Courier New',monospace; color:#c0c0c0;
+    display:flex; align-items:center; justify-content:center;
+    overflow:hidden;
+  }
+  #bootScreen.off{ display:none; }
+  .bs-phase{ width:100%; height:100%; display:none; box-sizing:border-box; }
+  .bs-phase.on{ display:flex; flex-direction:column; align-items:center; justify-content:center; }
+  #bsBios{ align-items:flex-start; justify-content:flex-start; padding:22px 26px; }
+  #bsBiosText{
+    font-family:'Courier New',monospace; font-size:15px;
+    white-space:pre-wrap; color:#c0c0c0; margin:0; line-height:1.45;
+  }
+  .bs-flag{
+    display:grid; grid-template-columns:1fr 1fr;
+    gap:5px; width:120px; height:120px; margin-bottom:24px;
+    transform: skewY(-8deg);
+  }
+  .bs-f1{ background:#f65314; }
+  .bs-f2{ background:#7cbb00; }
+  .bs-f3{ background:#00a1f1; }
+  .bs-f4{ background:#ffbb00; }
+  .bs-win-title{
+    font-family:'Times New Roman',serif; font-size:34px;
+    color:#fff; margin-bottom:10px; text-align:center; line-height:1.1;
+  }
+  .bs-win-title span{
+    display:block; font-style:italic; font-weight:bold;
+    font-size:52px; color:#fff;
+  }
+  .bs-loading{
+    color:#c0c0c0; font-size:16px; margin-top:26px;
+    font-family:'Courier New',monospace;
+  }
+  #bsLogin{
+    background: radial-gradient(circle at 50% 0%, #4a90d9 0%, #1e4a8a 40%, #0b1e3d 100%) !important;
+  }
+  .bs-login-card{
+    width:min(380px, 90vw);
+    background:#c0c0c0;
+    padding:3px;
+    box-shadow:
+      inset -1px -1px #0a0a0a,
+      inset  1px  1px #dfdfdf,
+      inset -2px -2px #808080,
+      inset  2px  2px #ffffff,
+      0 12px 40px rgba(0,0,0,.55);
+    font-family:'MS Sans Serif','Tahoma',sans-serif;
+    text-align:center;
+  }
+  .bs-avatar{
+    width:96px; height:96px;
+    margin:26px auto 14px;
+    display:grid; place-items:center;
+    font-size:52px;
+    background: linear-gradient(135deg,#e8f0ff 0%,#b8d0f0 100%);
+    border-radius:50%;
+    box-shadow:
+      inset 0 0 0 4px #fff,
+      inset 0 0 0 5px #7a9cc6,
+      0 4px 12px rgba(0,0,0,.4);
+    border:2px solid #404040;
+  }
+  .bs-user-name{
+    font-size:17px; font-weight:bold; color:#0a0a0a;
+    letter-spacing:.3px; margin-bottom:3px;
+  }
+  .bs-user-company{
+    font-size:11px; color:#505050; margin-bottom:22px;
+    text-transform:uppercase; letter-spacing:1px;
+  }
+  .bs-login-inputs{ padding:0 22px; }
+  .bs-input-row{
+    display:flex; align-items:center; gap:6px;
+    margin-bottom:8px; background:#fff; padding:5px 8px;
+    box-shadow:
+      inset  1px  1px #808080, inset -1px -1px #fff,
+      inset  2px  2px #0a0a0a, inset -2px -2px #dfdfdf;
+  }
+  .bs-input-row .bs-input-ic{ font-size:14px; opacity:.7; flex:0 0 auto; }
+  .bs-input-row input{
+    flex:1 1 auto; border:0; outline:none; background:transparent;
+    font-family:'MS Sans Serif','Tahoma',sans-serif;
+    font-size:12px; color:#202020; box-shadow:none; padding:2px 0;
+    width:auto; min-width:0;
+  }
+  .bs-login-btn{
+    display:inline-flex; align-items:center; gap:8px;
+    margin:18px 0 10px; padding:7px 26px;
+    font-family:'MS Sans Serif','Tahoma',sans-serif;
+    font-size:13px; font-weight:bold; color:#0a0a0a;
+    background:#d8d8d8; border:0; cursor:pointer;
+    box-shadow:
+      inset -1px -1px #0a0a0a, inset  1px  1px #ffffff,
+      inset -2px -2px #808080, inset  2px  2px #dfdfdf;
+  }
+  .bs-login-btn:hover{ background:#e6e6e6; }
+  .bs-login-btn:active{
+    box-shadow:
+      inset  1px  1px #0a0a0a, inset -1px -1px #ffffff,
+      inset  2px  2px #808080, inset -2px -2px #dfdfdf;
+  }
+  .bs-login-hint{
+    padding:6px 22px 18px; font-size:11px; color:#404040;
+    animation: hintBlink 1.4s ease-in-out infinite;
+  }
+  @keyframes hintBlink{ 0%,100%{ opacity:1; } 50%{ opacity:.35; } }
+
+  /* ============ EXPLORADOR DE ARQUIVOS ============ */
+  .exp-toolbar{
+    display:flex; gap:3px; align-items:center;
+    padding:4px; background:var(--face);
+    box-shadow: inset 1px 1px var(--white), inset -1px -1px var(--shadow);
+    flex:0 0 auto;
+  }
+  .exp-toolbar button{
+    width:26px; height:22px;
+    display:grid; place-items:center;
+    background:var(--face); border:0; cursor:default;
+    font-family:inherit; font-size:12px;
+    box-shadow:
+      inset -1px -1px var(--dark),
+      inset  1px  1px var(--white),
+      inset -2px -2px var(--shadow),
+      inset  2px  2px var(--light);
+  }
+  .exp-toolbar button:active{
+    box-shadow:
+      inset  1px  1px var(--dark),
+      inset -1px -1px var(--white),
+      inset  2px  2px var(--shadow),
+      inset -2px -2px var(--light);
+  }
+  .exp-path{
+    flex:1 1 auto;
+    display:flex; align-items:center; gap:4px;
+    padding:3px 6px;
+    background:#fff;
+    font-size:11px;
+    font-family:inherit;
+    box-shadow:
+      inset  1px  1px var(--shadow),
+      inset -1px -1px var(--white),
+      inset  2px  2px var(--dark),
+      inset -2px -2px var(--light);
+    overflow-x:auto;
+    white-space:nowrap;
+    min-width:0;
+  }
+  .exp-path .crumb{
+    padding:2px 6px;
+    cursor:pointer;
+    border-radius:2px;
+  }
+  .exp-path .crumb:hover{ background:#e8e8e8; }
+  .exp-path .sep{ color:#808080; }
+
+  .exp-main{
+    flex:1 1 auto;
+    display:flex;
+    min-height:0;
+    background:#fff;
+    border-top:1px solid var(--shadow);
+  }
+  .exp-side{
+    flex:0 0 160px;
+    border-right:1px solid var(--shadow);
+    background:#fff;
+    padding:6px 4px;
+    overflow-y:auto;
+  }
+  .exp-side .node{
+    display:flex; align-items:center; gap:6px;
+    padding:3px 6px;
+    font-size:12px;
+    cursor:pointer;
+    border-radius:2px;
+  }
+  .exp-side .node:hover{ background:#e8e8e8; }
+  .exp-side .node.active{
+    background:var(--navy);
+    color:#fff;
+  }
+  .exp-side .node .ic{ font-size:14px; }
+
+  .exp-content{
+    flex:1 1 auto;
+    overflow-y:auto;
+    padding:10px;
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(88px,1fr));
+    gap:6px;
+    align-content:start;
+  }
+  .exp-item{
+    display:flex; flex-direction:column; align-items:center; gap:3px;
+    padding:8px 4px;
+    text-align:center;
+    cursor:default;
+    border:1px dotted transparent;
+    user-select:none;
+  }
+  .exp-item .ic{ font-size:30px; line-height:1; }
+  .exp-item .nm{ font-size:11px; word-break:break-word; line-height:1.2; }
+  .exp-item:hover{ background:#eaf1fb; }
+  .exp-item.sel{
+    background:var(--navy);
+    color:#fff;
+  }
+  .exp-item.sel .nm{ color:#fff; }
+
+  .exp-status{
+    flex:0 0 auto;
+    padding:3px 8px;
+    background:var(--face);
+    font-size:11px;
+    border-top:1px solid var(--white);
+    box-shadow: inset 0 1px var(--shadow);
+  }
+
+  /* ícones do desktop arrastáveis */
+  #icons > .dicon{ position:absolute; touch-action:none; }
+  #icons > .dicon.dragging{ opacity:.6; z-index:999; }
+  
   @media (max-width:640px){
     .window:not(.maximized){
-      left:4px !important;
-      top:4px !important;
+      left:4px !important; top:4px !important;
       width:calc(100% - 8px) !important;
       max-height:calc(100% - 8px);
     }
@@ -532,15 +853,65 @@
 </head>
 <body>
 
+<!-- ============ BOOT SCREEN ============ -->
+<div id="bootScreen">
+  <div class="bs-phase" id="bsBios"><pre id="bsBiosText"></pre></div>
+  <div class="bs-phase" id="bsWindows">
+    <div class="bs-flag">
+      <div class="bs-f1"></div><div class="bs-f2"></div>
+      <div class="bs-f3"></div><div class="bs-f4"></div>
+    </div>
+    <div class="bs-win-title">Sōka Kikō<span>Group 95</span></div>
+    <div class="bs-loading">Starting Sōka Kikō 95...</div>
+  </div>
+  <div class="bs-phase" id="bsLogin">
+    <div class="bs-login-card">
+      <div class="bs-avatar">🏢</div>
+      <div class="bs-user-name">funcionario.soka</div>
+      <div class="bs-user-company">Sōka Kikō Group 95</div>
+      <div class="bs-login-inputs">
+        <div class="bs-input-row">
+          <span class="bs-input-ic">👤</span>
+          <input type="text" value="funcionario.soka" readonly>
+        </div>
+        <div class="bs-input-row">
+          <span class="bs-input-ic">🔑</span>
+          <input type="password" value="********" readonly>
+        </div>
+      </div>
+      <button class="bs-login-btn" id="bsLoginBtn">▶ Entrar</button>
+    </div>
+  </div>
+</div>
+
 <div id="desktop">
+
+  <!-- ============ EXPLORADOR DE ARQUIVOS ============ -->
+  <div class="window" data-win="explorer" data-title="Explorador de Arquivos" style="left:160px; top:80px; width:660px; height:460px;">
+    <div class="titlebar"><span class="tb-title">Explorador de Arquivos</span></div>
+    <div class="exp-toolbar">
+      <button id="expBack" title="Voltar">◀</button>
+      <button id="expFwd"  title="Avançar">▶</button>
+      <button id="expUp"   title="Subir um nível">⬆</button>
+      <button id="expReload" title="Atualizar">⟳</button>
+      <div class="exp-path" id="expPath"></div>
+    </div>
+    <div class="exp-main">
+      <div class="exp-side" id="expSide"></div>
+      <div class="exp-content" id="expContent"></div>
+    </div>
+    <div class="exp-status" id="expStatus">Pronto.</div>
+  </div>
 
   <div id="icons">
     <div class="dicon" data-open="sobre"><div class="glyph">🏢</div><div class="lbl">Sobre nós</div></div>
     <div class="dicon" data-open="servicos"><div class="glyph">⚙️</div><div class="lbl">Serviços</div></div>
     <div class="dicon" data-open="portfolio"><div class="glyph">🎨</div><div class="lbl">Portfólio</div></div>
     <div class="dicon" data-open="contato"><div class="glyph">✉️</div><div class="lbl">Contato</div></div>
+    <div class="dicon" data-open="sokagle"><div class="glyph">🌐</div><div class="lbl">Sōkagle</div></div>
     <div class="dicon" data-open="computador"><div class="glyph">🖥️</div><div class="lbl">Meu Computador</div></div>
     <div class="dicon" data-open="lixeira"><div class="glyph">🗑️</div><div class="lbl">Lixeira</div></div>
+    <div class="dicon" data-open="explorer"><div class="glyph">📁</div><div class="lbl">Explorer</div></div>
   </div>
 
   <div class="window active" data-win="sobre" data-title="Sobre nós" style="left:70px; top:36px; width:420px;">
@@ -689,7 +1060,23 @@
     </div>
   </div>
 
-  <!-- ============ YUME NAVI (adicionado ao menu Iniciar automaticamente) ============ -->
+  <!-- ============ SŌKAGLE ============ -->
+  <div class="window" data-win="sokagle" data-title="Sōkagle — Navegador" style="left:90px; top:50px; width:640px;">
+    <div class="titlebar"><span class="tb-title">Sōkagle — Navegador da Sōka Kikō</span></div>
+    <div id="sokagleToolbar">
+      <button title="Voltar" id="skBack">◀</button>
+      <button title="Avançar" id="skFwd">▶</button>
+      <button title="Atualizar" id="skReload">⟳</button>
+      <button title="Início" id="skHome">🏠</button>
+      <input type="text" id="sokagleUrl" placeholder="Digite sua busca ou uma URL..." spellcheck="false">
+      <button title="Ir" id="skGo">→</button>
+    </div>
+    <div class="win-body" style="padding:0; background:#fff; display:flex; flex-direction:column;">
+      <div id="sokagleContent"></div>
+    </div>
+  </div>
+
+  <!-- ============ YUME NAVI ============ -->
   <div class="window" data-win="yume" data-title="Yume Navi — beta" style="left:170px; top:60px; width:470px;">
     <div class="titlebar"><span class="tb-title">Yume Navi — beta (Visual Novel)</span></div>
     <div class="win-body" id="yumeBody"></div>
@@ -706,24 +1093,19 @@
           <p>Esse setor da Sōka Kikō é <b>confidencial</b>. Só quem sabe a senha entra.</p>
         </div>
       </div>
-
       <div class="sunken" style="padding:8px; margin-bottom:12px;">
         <p style="font-size:11px; color:#404040; margin:0 0 6px;">
-          💡 <b>Dica:</b> a senha tem <b>6 letras</b>, é uma palavra japonesa bem
-          conhecida e tá guardada em pedaços por aí.
+          💡 <b>Dica:</b> a senha tem <b>6 letras</b>, é uma palavra japonesa bem conhecida e tá guardada em pedaços por aí.
         </p>
         <p style="font-size:11px; color:#404040; margin:0;">
-          🎀 <b>Pista extra:</b> abra o <b>menu Iniciar</b> de novo — uma
-          surpresinha apareceu por lá... 💗
+          🎀 <b>Pista extra:</b> abra o <b>menu Iniciar</b> de novo — uma surpresinha apareceu por lá... 💗
         </p>
       </div>
-
       <div class="field">
         <label>Senha:</label>
         <input type="text" id="senhaInput" maxlength="12" placeholder="??????">
       </div>
       <p id="senhaMsg" style="font-size:11px; color:#a00; margin:0 0 8px; min-height:14px;"></p>
-
       <div style="text-align:right;">
         <button class="btn" id="btnSenha">Entrar</button>
         <button class="btn" data-close>Fechar</button>
@@ -766,6 +1148,7 @@
     <div class="sm-item" data-open="servicos"><span class="g">⚙️</span>Serviços</div>
     <div class="sm-item" data-open="portfolio"><span class="g">🎨</span>Portfólio</div>
     <div class="sm-item" data-open="contato"><span class="g">✉️</span>Contato</div>
+    <div class="sm-item" data-open="sokagle"><span class="g">🌐</span>Sōkagle</div>
     <div class="sm-item" data-open="computador"><span class="g">🖥️</span>Meu Computador</div>
     <div class="sm-sep" id="smSepFinal"></div>
     <div class="sm-item" data-open="ajuda"><span class="g">❓</span>Ajuda</div>
@@ -783,6 +1166,8 @@
     </small>
   </div>
 </div>
+
+<div id="ctxMenu"></div>
 
 <div id="moonEgg" title="clique para acordar">
   <img src="https://art.ngfiles.com/images/5737000/5737865_833606_rapscallionjones_untitled-5737865.989e53498f6eefced03e390edc305c8e.png" alt="Lua de Soul Eater">
@@ -864,6 +1249,26 @@
   </div>
 </div>
 
+<div id="animePopup" class="popup-overlay">
+  <div class="anime-dialog">
+    <div class="titlebar">
+      <span class="tb-title" id="aeWinTitle">Aviso do Sistema</span>
+      <div class="tb-btns">
+        <button id="aeCloseBtn" title="Fechar">✕</button>
+      </div>
+    </div>
+    <div class="win-body">
+      <div class="ae-emoji" id="aeEmoji">✨</div>
+      <h3 class="ae-title" id="aeTitle">Título</h3>
+      <p class="ae-msg" id="aeMsg">Mensagem</p>
+      <p class="ae-hint" id="aeHint"></p>
+      <div style="text-align:right; margin-top:14px;">
+        <button class="btn" id="aeOkBtn">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div id="bsod">
   <div>
     <p style="font-size: 24px; margin-bottom: 20px;">SŌKA KIKŌ GROUP LTD</p>
@@ -876,6 +1281,95 @@
 
 <script>
 (function(){
+
+  /* ============ BOOT SEQUENCE SŌKA KIKŌ 95 (rebootável) ============ */
+  function startBoot(){
+    const boot = document.getElementById('bootScreen');
+    const bios = document.getElementById('bsBios');
+    const biosText = document.getElementById('bsBiosText');
+    const win = document.getElementById('bsWindows');
+    const login = document.getElementById('bsLogin');
+    const loginBtn = document.getElementById('bsLoginBtn');
+    if(!boot) return;
+
+    // Reset visual (importante pra reboot)
+    boot.classList.remove('off');
+    boot.style.display = '';
+    bios.classList.remove('on');
+    win.classList.remove('on');
+    login.classList.remove('on');
+    biosText.textContent = '';
+
+    const biosLines = [
+      'Sōka Kikō BIOS v9.5.1 — An Energy Star Ally',
+      'Copyright (C) 1984-95, Sōka Kikō Group LTD',
+      '',
+      'Award Modular BIOS v4.51PG',
+      '',
+      'Main Processor    : Sōka Kikō 486DX2-66MHz',
+      'Memory Test       : 640K  OK',
+      'Memory Test       : 8192K OK',
+      '',
+      'Detecting IDE Primary Master   ... SOKA HDD 540MB',
+      'Detecting IDE Primary Slave    ... None',
+      'Detecting IDE Secondary Master ... CD-ROM 2X',
+      'Detecting IDE Secondary Slave  ... None',
+      'Detecting Floppy Drive A       ... 1.44M, 3.5 in.',
+      '',
+      'Mouse detected on PS/2 port',
+      'Keyboard detected on AT port',
+      '',
+      'Loading user profile: funcionario.soka',
+      'Verificando credenciais...... OK',
+      '',
+      'Press DEL to enter SETUP, ESC to skip memory test',
+      '',
+      'Starting Sōka Kikō 95...'
+    ];
+
+    let i = 0;
+    let done = false;
+
+    function typeBios(){
+      if(i >= biosLines.length){
+        setTimeout(showWin, 350);
+        return;
+      }
+      biosText.textContent += biosLines[i] + '\n';
+      i++;
+      setTimeout(typeBios, 70);
+    }
+    function showWin(){
+      bios.classList.remove('on');
+      win.classList.add('on');
+      setTimeout(showLogin, 2400);
+    }
+    function showLogin(){
+      win.classList.remove('on');
+      login.classList.add('on');
+    }
+    function finish(){
+      if(done) return;
+      done = true;
+      boot.classList.add('off');
+      setTimeout(() => { boot.style.display = 'none'; }, 100);
+    }
+
+    // onclick (não addEventListener) pra não empilhar a cada reboot
+    if(loginBtn){
+      loginBtn.onclick = (e) => {
+        e.stopPropagation();
+        finish();
+      };
+    }
+
+    bios.classList.add('on');
+    typeBios();
+  }
+
+  // Boot inicial
+  startBoot();
+  
   const desktop  = document.getElementById('desktop');
   const tasksEl  = document.getElementById('tasks');
   const startBtn = document.getElementById('startbtn');
@@ -886,16 +1380,18 @@
   const adoEgg   = document.getElementById('adoEgg');
   const spamEgg  = document.getElementById('spamEgg');
   const uwuEgg   = document.getElementById('uwuEgg');
+  const animePopup = document.getElementById('animePopup');
   const bsod     = document.getElementById('bsod');
+  const ctxMenu  = document.getElementById('ctxMenu');
 
   const running = new Set();
   let activeId = null;
   let zTop = 10;
 
-  const el  = id => document.querySelector('.window[data-win="' + id + '"]');
+  const qs = id => document.querySelector('.window[data-win="' + id + '"]');
   const isTouch = window.matchMedia('(hover: none)').matches;
 
-  const contatoWin = el('contato');
+  const contatoWin = qs('contato');
   const contatoBodyOriginal = contatoWin.querySelector('.win-body').innerHTML;
 
   function escapeHtml(s){
@@ -935,12 +1431,14 @@
   });
 
   function openWindow(id){
-    const w = el(id);
+    const w = qs(id);
     if(!w) return;
     w.style.display = 'flex';
     running.add(id);
     focusWindow(id);
     if(id === 'yume') renderYume();
+    if(id === 'sokagle') renderSokagleHome();
+    if(id === 'explorer') expRender();
     if(id === 'confidencial'){
       const inp = document.getElementById('senhaInput');
       const msg = document.getElementById('senhaMsg');
@@ -951,7 +1449,7 @@
   }
 
   function openWindowBehind(id){
-    const w = el(id);
+    const w = qs(id);
     if(!w) return;
     w.style.display = 'flex';
     w.style.zIndex = 1;
@@ -960,7 +1458,7 @@
   }
 
   function closeWindow(id){
-    const w = el(id);
+    const w = qs(id);
     if(!w) return;
 
     if(id === 'contato'){
@@ -975,14 +1473,14 @@
   }
 
   function minimizeWindow(id){
-    const w = el(id);
+    const w = qs(id);
     w.style.display = 'none';
     if(activeId === id) activeId = null;
     renderTasks();
   }
 
   function focusWindow(id){
-    const w = el(id);
+    const w = qs(id);
     activeId = id;
     w.style.zIndex = ++zTop;
     document.querySelectorAll('.window').forEach(x => x.classList.toggle('active', x === w));
@@ -990,7 +1488,7 @@
   }
 
   function toggleMax(id){
-    const w = el(id);
+    const w = qs(id);
     w.classList.toggle('maximized');
     focusWindow(id);
   }
@@ -998,7 +1496,7 @@
   function renderTasks(){
     tasksEl.innerHTML = '';
     running.forEach(id => {
-      const w = el(id);
+      const w = qs(id);
       if(!w) return;
       const b = document.createElement('button');
       b.className = 'taskbtn' + (activeId === id ? ' active' : '');
@@ -1096,6 +1594,144 @@
   });
 
   /* ============================================================
+     MENU DE CONTEXTO (BOTÃO DIREITO)
+     ============================================================ */
+  function hideCtxMenu(){
+    ctxMenu.style.display = 'none';
+    ctxMenu.innerHTML = '';
+  }
+
+  function buildCtxMenu(items){
+    ctxMenu.innerHTML = '';
+    items.forEach(it => {
+      if(it.type === 'sep'){
+        const s = document.createElement('div');
+        s.className = 'ctx-sep';
+        ctxMenu.appendChild(s);
+        return;
+      }
+      const node = document.createElement('div');
+      node.className = 'ctx-item' + (it.disabled ? ' disabled' : '') + (it.bold ? ' bold' : '');
+      node.innerHTML =
+        '<span class="ic">' + (it.icon || '') + '</span>' +
+        '<span class="lbl">' + escapeHtml(it.label) + '</span>' +
+        (it.shortcut ? '<span class="sc">' + escapeHtml(it.shortcut) + '</span>' : '');
+      if(!it.disabled && typeof it.action === 'function'){
+        node.addEventListener('click', ev => {
+          ev.stopPropagation();
+          hideCtxMenu();
+          try { it.action(); } catch(err){ console.warn('ctx action error', err); }
+        });
+      }
+      ctxMenu.appendChild(node);
+    });
+  }
+
+  document.addEventListener('contextmenu', e => {
+    const tag = e.target.tagName;
+    if(tag === 'INPUT' || tag === 'TEXTAREA') return;
+
+    e.preventDefault();
+
+    const dicon    = e.target.closest('.dicon[data-open]');
+    const titlebar = e.target.closest('.titlebar');
+    const winEl    = e.target.closest('.window');
+    const taskbtn  = e.target.closest('.taskbtn');
+
+    let items = [];
+
+    if(dicon){
+      const id = dicon.dataset.open;
+      items = [
+        { label:'Abrir', bold:true, icon:'📂', action:()=>openWindow(id) },
+        { type:'sep' },
+        { label:'Renomear', icon:'✏️', disabled:true },
+        { label:'Excluir',  icon:'🗑️', disabled:true },
+        { type:'sep' },
+        { label:'Propriedades', icon:'📋', disabled:true }
+      ];
+    } else if(taskbtn){
+      items = [
+        { label:'Restaurar', icon:'⬜', action:()=>{ if(activeId) openWindow(activeId); } },
+        { type:'sep' },
+        { label:'Minimizar', icon:'➖', action:()=>{ if(activeId) minimizeWindow(activeId); } },
+        { label:'Fechar',    icon:'✕',  action:()=>{ if(activeId) closeWindow(activeId); } }
+      ];
+    } else if(titlebar && winEl){
+      const id = winEl.dataset.win;
+      items = [
+        { label:'Restaurar', icon:'⬜', action:()=>openWindow(id) },
+        { type:'sep' },
+        { label:'Mover',      icon:'↔️', disabled:true },
+        { label:'Minimizar',  icon:'➖', action:()=>minimizeWindow(id) },
+        { label:'Maximizar',  icon:'⬜', action:()=>toggleMax(id) },
+        { type:'sep' },
+        { label:'Fechar',     icon:'✕', shortcut:'Alt+F4', action:()=>closeWindow(id) }
+      ];
+    } else if(winEl){
+      const id = winEl.dataset.win;
+      items = [
+        { label:'Atualizar', icon:'🔄', action:()=>{
+          const win = qs(id);
+          if(!win) return;
+          win.style.display = 'none';
+          setTimeout(()=>openWindow(id), 50);
+        } },
+        { type:'sep' },
+        { label:'Propriedades', icon:'📋', disabled:true }
+      ];
+    } else {
+      items = [
+        { label:'Organizar ícones', icon:'🗂️', action:()=>{
+          const wrap = document.getElementById('icons');
+          if(!wrap) return;
+          const ICON_W = 86, ICON_H = 96, PAD_X = 10, PAD_Y = 10;
+          const maxRows = Math.max(1, Math.floor((window.innerHeight - 60) / ICON_H));
+          let col = 0, row = 0;
+          wrap.querySelectorAll(':scope > .dicon').forEach(ic => {
+            ic.style.left = (PAD_X + col * ICON_W) + 'px';
+            ic.style.top  = (PAD_Y + row * ICON_H) + 'px';
+            row++;
+            if(row >= maxRows){ row = 0; col++; }
+          });
+        } },
+        { label:'Atualizar',        icon:'🔄', action:()=>{} },        { type:'sep' },
+        { label:'Colar', icon:'📋', disabled:true, shortcut:'Ctrl+V' },
+        { label:'Novo',  icon:'📄', disabled:true },
+        { type:'sep' },
+        { label:'Propriedades',     icon:'📋', action:()=>openWindow('computador') }
+      ];
+    }
+
+    // Monta primeiro (escondido) pra medir tamanho real
+    buildCtxMenu(items);
+    ctxMenu.style.visibility = 'hidden';
+    ctxMenu.style.display = 'block';
+    ctxMenu.style.left = '0px';
+    ctxMenu.style.top  = '0px';
+
+    const rect = ctxMenu.getBoundingClientRect();
+    let x = e.clientX, y = e.clientY;
+    if(x + rect.width  > window.innerWidth)  x = window.innerWidth  - rect.width  - 6;
+    if(y + rect.height > window.innerHeight) y = window.innerHeight - rect.height - 6;
+    x = Math.max(0, x);
+    y = Math.max(0, y);
+
+    ctxMenu.style.left = x + 'px';
+    ctxMenu.style.top  = y + 'px';
+    ctxMenu.style.visibility = 'visible';
+  });
+
+  document.addEventListener('click', hideCtxMenu);
+  document.addEventListener('contextmenu', e => {
+    // Se já estava aberto e o usuário clicar de novo fora, o handler acima
+    // já vai reconstruir. Se clicar dentro do menu, não fecha.
+    if(e.target.closest('#ctxMenu')) e.preventDefault();
+  });
+  document.addEventListener('keydown', e => { if(e.key === 'Escape') hideCtxMenu(); });
+  window.addEventListener('blur', hideCtxMenu);
+
+  /* ============================================================
      DESLIGAR + LUA
      ============================================================ */
   let shutdownTimers = [];
@@ -1118,20 +1754,24 @@
     moonEgg.classList.remove('on');
     clearShutdownTimers();
   }
+  function reboot(){
+    hideShutdown();
+    // pequeno delay pra tela preta respirar antes de ligar de novo
+    setTimeout(startBoot, 250);
+  }
   document.getElementById('smShutdown').addEventListener('click', () => {
     closeStart();
     showShutdown();
   });
-  shutdown.addEventListener('click', hideShutdown);
-  moonEgg.addEventListener('click', hideShutdown);
-
+  shutdown.addEventListener('click', reboot);
+  moonEgg.addEventListener('click', reboot);
   /* ============================================================
      ENVIAR (formulário de contato)
      ============================================================ */
   document.addEventListener('click', e => {
     if(!e.target.closest('#btnEnviar')) return;
 
-    const win    = el('contato');
+    const win    = qs('contato');
     const inputs = win.querySelectorAll('input');
     const nome   = (inputs[0].value || '').trim();
     const email  = (inputs[1].value || '').trim();
@@ -1155,12 +1795,8 @@
         '<div class="big-glyph">✅</div>' +
         '<div>' +
           '<h3>Mensagem enviada!</h3>' +
-          '<p>Brincadeira. Este formulário não vai a lugar nenhum — ' +
-            'manda de verdade em ' +
+          '<p>Brincadeira. Este formulário não vai a lugar nenhum — manda de verdade em ' +
             '<a class="win-link" href="' + mailto + '">httpszitto@gmail.com</a>.' +
-          '</p>' +
-          '<p style="color:#606060; font-size:11px;">' +
-            'O link já abre seu e-mail com assunto e mensagem preenchidos.' +
           '</p>' +
           '<p style="color:#606060; font-size:11px;">' +
             'Não confia no seu cliente de e-mail? Tem uma janela <b>Anotação</b> ' +
@@ -1172,7 +1808,7 @@
         '<button class="btn" data-close>OK</button>' +
       '</div>';
 
-    const anot  = el('anotacao');
+    const anot  = qs('anotacao');
     const abody = anot.querySelector('.win-body');
     abody.innerHTML =
       '<p>Você escreveu isso aqui embaixo. Se o formulário te deixou na mão, é só copiar:</p>' +
@@ -1189,7 +1825,6 @@
       campo.focus();
       campo.select();
       campo.setSelectionRange(0, campo.value.length);
-
       let ok = false;
       try {
         if(navigator.clipboard && navigator.clipboard.writeText){
@@ -1197,10 +1832,7 @@
           ok = true;
         }
       } catch(_) {}
-      if(!ok){
-        try { ok = document.execCommand('copy'); } catch(_) {}
-      }
-
+      if(!ok){ try { ok = document.execCommand('copy'); } catch(_) {} }
       const b = ev.currentTarget;
       b.textContent = ok ? 'Copiado!' : 'Ctrl+C';
       setTimeout(() => { b.textContent = 'Copiar'; }, 1500);
@@ -1213,15 +1845,21 @@
      RELÓGIO
      ============================================================ */
   function tick(){
-    const d = new Date();
-    document.getElementById('clock').textContent =
-      String(d.getHours()).padStart(2,'0') + ':' + String(d.getMinutes()).padStart(2,'0');
+    const agora = new Date();
+    // Fuso de Brasília (America/Sao_Paulo) — funciona não importa onde você esteja
+    const hora = agora.toLocaleTimeString('pt-BR', {
+      timeZone: 'America/Sao_Paulo',
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false
+    });
+    document.getElementById('clock').textContent = hora;
   }
   tick();
-  setInterval(tick, 15000);
+  setInterval(tick, 1000);
 
   /* ============================================================
-     EASTER EGG 1: KONAMI → RICKROLL
+     EASTER EGG 1: KONAMI
      ============================================================ */
   const KONAMI = [
     'ArrowUp','ArrowUp','ArrowDown','ArrowDown',
@@ -1231,8 +1869,7 @@
   let konamiPos = 0;
   document.addEventListener('keydown', e => {
     const k = e.key.length === 1 ? e.key.toLowerCase() : e.key;
-    const esperado = KONAMI[konamiPos];
-    if(k === esperado){
+    if(k === KONAMI[konamiPos]){
       konamiPos++;
       if(konamiPos === KONAMI.length){
         konamiPos = 0;
@@ -1253,34 +1890,28 @@
   document.getElementById('animeCloseBtn').addEventListener('click', hideAnimeEgg);
 
   /* ============================================================
-     EASTER EGG 3: "ado" → IMAGEM DA ADO
+     EASTER EGG 3: "ado"
      ============================================================ */
-  const ADO = 'ado';
-  let adoPos = 0;
+  const ADO = 'ado'; let adoPos = 0;
   function hideAdoEgg(){ adoEgg.classList.remove('on'); }
   document.addEventListener('keydown', e => {
     const k = e.key.length === 1 ? e.key.toLowerCase() : e.key;
     if(k === ADO[adoPos]){
       adoPos++;
-      if(adoPos === ADO.length){
-        adoPos = 0;
-        adoEgg.classList.add('on');
-      }
-    } else {
-      adoPos = (k === ADO[0]) ? 1 : 0;
-    }
+      if(adoPos === ADO.length){ adoPos = 0; adoEgg.classList.add('on'); }
+    } else { adoPos = (k === ADO[0]) ? 1 : 0; }
   });
   adoEgg.addEventListener('click', hideAdoEgg);
 
   /* ============================================================
-     EASTER EGG 4: TECLA END → GAROTA DE ANIME
+     EASTER EGG 4: TECLA END
      ============================================================ */
   document.addEventListener('keydown', e => {
     if(e.key === 'End') showAnimeEgg();
   });
 
   /* ============================================================
-     EASTER EGG 5: SPAM DE TECLADO → POPUP
+     EASTER EGG 5: SPAM (15 teclas em 2s)
      ============================================================ */
   let teclasRecentes = [];
   document.addEventListener('keydown', e => {
@@ -1288,7 +1919,7 @@
       const agora = Date.now();
       teclasRecentes.push(agora);
       teclasRecentes = teclasRecentes.filter(t => agora - t < 2000);
-      if(teclasRecentes.length >= 10){
+      if(teclasRecentes.length >= 15){
         teclasRecentes = [];
         spamEgg.classList.add('on');
       }
@@ -1298,10 +1929,9 @@
   document.getElementById('spamCloseBtn').addEventListener('click', () => spamEgg.classList.remove('on'));
 
   /* ============================================================
-     EASTER EGG 6: BSOD (3 cliques no Meu Computador)
+     EASTER EGG 6: BSOD
      ============================================================ */
-  let cliqueComputador = 0;
-  let timerComputador = null;
+  let cliqueComputador = 0, timerComputador = null;
   const iconeComputador = document.querySelector('.dicon[data-open="computador"]');
   if(iconeComputador){
     iconeComputador.addEventListener('click', () => {
@@ -1319,10 +1949,8 @@
 
   /* ============================================================
      EASTER EGG 7: MENU SECRETO
-     5 cliques no Iniciar → item "Sōka Kikō Confidencial" aparece.
      ============================================================ */
-  let cliqueIniciar = 0;
-  let timerIniciar = null;
+  let cliqueIniciar = 0, timerIniciar = null;
   startBtn.addEventListener('click', () => {
     cliqueIniciar++;
     clearTimeout(timerIniciar);
@@ -1337,7 +1965,6 @@
         item.innerHTML = '<span class="g">🔒</span>Sōka Kikō Confidencial';
         item.addEventListener('click', () => {
           closeStart();
-          // JÁ libera o Yume Navi no menu Iniciar
           adicionarYumeNaviAoMenu();
           openWindow('confidencial');
         });
@@ -1350,24 +1977,15 @@
     }
   });
 
-  /* ============================================================
-     YUME NAVI adicionado ao menu Iniciar (chamado automaticamente)
-     ============================================================ */
   function adicionarYumeNaviAoMenu(){
     if(document.getElementById('smYume')) return;
     const menuItems = document.getElementById('smItems');
     const sep = document.createElement('div');
-    sep.className = 'sm-sep';
-    sep.id = 'smYumeSep';
+    sep.className = 'sm-sep'; sep.id = 'smYumeSep';
     const item = document.createElement('div');
-    item.className = 'sm-item';
-    item.id = 'smYume';
+    item.className = 'sm-item'; item.id = 'smYume';
     item.innerHTML = '<span class="g">💗</span>Yume Navi';
-    item.addEventListener('click', () => {
-      closeStart();
-      openWindow('yume');
-    });
-    // Insere logo antes do separador final (antes de Ajuda/Desligar)
+    item.addEventListener('click', () => { closeStart(); openWindow('yume'); });
     const sepFinal = document.getElementById('smSepFinal');
     if(sepFinal){
       menuItems.insertBefore(sep,  sepFinal);
@@ -1379,21 +1997,15 @@
   }
 
   /* ============================================================
-     EASTER EGG 8: DIGITAR "uwu" → POPUP FOFO
+     EASTER EGG 8: "uwu"
      ============================================================ */
-  const UWU = 'uwu';
-  let uwuPos = 0;
+  const UWU = 'uwu'; let uwuPos = 0;
   document.addEventListener('keydown', e => {
     const k = e.key.length === 1 ? e.key.toLowerCase() : e.key;
     if(k === UWU[uwuPos]){
       uwuPos++;
-      if(uwuPos === UWU.length){
-        uwuPos = 0;
-        uwuEgg.classList.add('on');
-      }
-    } else {
-      uwuPos = (k === UWU[0]) ? 1 : 0;
-    }
+      if(uwuPos === UWU.length){ uwuPos = 0; uwuEgg.classList.add('on'); }
+    } else { uwuPos = (k === UWU[0]) ? 1 : 0; }
   });
   document.getElementById('uwuOkBtn').addEventListener('click', () => uwuEgg.classList.remove('on'));
   document.getElementById('uwuCloseBtn').addEventListener('click', () => uwuEgg.classList.remove('on'));
@@ -1408,7 +2020,7 @@
       cliquesLixeira++;
       if(cliquesLixeira >= 7){
         cliquesLixeira = 0;
-        const win = el('lixeira');
+        const win = qs('lixeira');
         if(win){
           const body = win.querySelector('.win-body');
           body.innerHTML =
@@ -1416,13 +2028,11 @@
               '<div class="big-glyph">🗑️</div>' +
               '<div>' +
                 '<h3>Tá bom, tá vazio.</h3>' +
-                '<p>Você clicou <b>7 vezes</b> na Lixeira. Não tem nada aqui. A empresa não pode ser excluída, e nem você deveria estar tentando tanto assim.</p>' +
+                '<p>Você clicou <b>7 vezes</b> na Lixeira. Não tem nada aqui.</p>' +
                 '<p style="color:#606060; font-size:11px;">Vai procurar easter egg em outro lugar. Sério. 😒</p>' +
               '</div>' +
             '</div>' +
-            '<div style="text-align:right;">' +
-              '<button class="btn" data-close>OK</button>' +
-            '</div>';
+            '<div style="text-align:right;"><button class="btn" data-close>OK</button></div>';
           openWindow('lixeira');
         }
       }
@@ -1436,10 +2046,10 @@
   const sobreDesc   = document.getElementById('sobreDesc');
   let cliquesTitulo = 0;
   const titulosAlt = [
-    { t: 'Sōka Kikō Group LTD',   d: 'Uma empresa pequenininha com um catálogo grande demais.' },
+    { t: 'Sōka Kikō Group LTD',      d: 'Uma empresa pequenininha com um catálogo grande demais.' },
     { t: 'Sōka Kikō Group V.O.I.D.', d: 'Nós não existimos oficialmente. Finge que não viu.' },
-    { t: 'Sōka Kikō Group ∞',      d: 'Uma empresa eterna num servidor temporário.' },
-    { t: 'Sōka Kikō Group LTD',    d: 'Tá bom, pode parar de clicar. A piada acabou.' }
+    { t: 'Sōka Kikō Group ∞',        d: 'Uma empresa eterna num servidor temporário.' },
+    { t: 'Sōka Kikō Group LTD',      d: 'Tá bom, pode parar de clicar. A piada acabou.' }
   ];
   if(sobreTitulo){
     sobreTitulo.style.cursor = 'pointer';
@@ -1452,13 +2062,70 @@
   }
 
   /* ============================================================
+     EASTER EGGS 11-30: 20 PALAVRAS ANIME/GAME
+     ============================================================ */
+  function showAnimePopup(cfg){
+    document.getElementById('aeWinTitle').textContent = cfg.winTitle || 'Aviso do Sistema';
+    document.getElementById('aeEmoji').textContent    = cfg.emoji || '✨';
+    const t = document.getElementById('aeTitle');
+    t.textContent = cfg.title;
+    t.style.color = cfg.color || '#000';
+    document.getElementById('aeMsg').textContent      = cfg.msg;
+    document.getElementById('aeHint').textContent     = cfg.hint || '';
+    animePopup.classList.add('on');
+  }
+  function hideAnimePopup(){ animePopup.classList.remove('on'); }
+  document.getElementById('aeOkBtn').addEventListener('click', hideAnimePopup);
+  document.getElementById('aeCloseBtn').addEventListener('click', hideAnimePopup);
+
+  const animeEggs = [
+    { words:['naruto'],     emoji:'🍥', title:'Jutsu de Invocação!',        msg:'Você aprendeu o Jutsu de Invocação. Cuidado pra não invocar um sapo na sala.', color:'#ff8800', winTitle:'⚠️ Alerta Ninja' },
+    { words:['goku'],       emoji:'🐉', title:'Kame... hame... HA!',         msg:'Você juntou as mãos, canalizou o ki e mandou um Kamehameha pro teto. Parabéns.', color:'#ff5500', winTitle:'🐉 Dragon Ball' },
+    { words:['jojo'],       emoji:'⏰', title:'To be continued...',          msg:'Uma seta apareceu do nada. Yes! Yes! Yes! YES!', color:'#7b1fa2', winTitle:'📺 JoJo Reference' },
+    { words:['onepiece'],   emoji:'🏴‍☠️', title:'O ONE PIECE É REAL!',        msg:'"O One Piece é real!" — Gold Roger. Você achou o tesouro do site.', color:'#c62828', winTitle:'🏴‍☠️ One Piece' },
+    { words:['sasuke'],     emoji:'👁️', title:'Sharingan Ativado',           msg:'Seu olho ficou vermelho. Agora você vê 1000 anos de dor.', color:'#b71c1c', winTitle:'👁️ Uchiha' },
+    { words:['pokemon'],    emoji:'⚡', title:'Pikachu! Eu escolho você!',   msg:'Pikachu usou Thunderbolt! Foi super efetivo!', color:'#f9a825', winTitle:'⚡ Pokémon' },
+    { words:['zelda'],      emoji:'🗡️', title:"It's dangerous to go alone!", msg:'Pegue essa espada. Você vai precisar dela. O site é grande.', color:'#2e7d32', winTitle:'🗡️ The Legend of Zelda' },
+    { words:['minecraft'],  emoji:'🟩', title:'Ssssss... Creeper!',           msg:'Um creeper apareceu do seu lado. Você tem 3 segundos pra fugir. BOOM.', color:'#43a047', winTitle:'⛏️ Minecraft' },
+    { words:['skyrim'],     emoji:'🐲', title:'FUS RO DAH!',                  msg:'Você gritou tão alto que o site quase desabou. Cuidado com o Dragão.', color:'#546e7a', winTitle:'🐲 Skyrim' },
+    { words:['darksouls'],  emoji:'💀', title:'YOU DIED',                     msg:'Você morreu. Mas levanta, porque a gente sempre morre e volta.', color:'#8d0000', winTitle:'💀 Dark Souls' },
+    { words:['undertale'],  emoji:'🌸', title:'* Você sente que vai ter um bom momento.', msg:'* Continue determinada(o). * A Sōka Kikō te ama.', color:'#d81b60', winTitle:'🌸 Undertale' },
+    { words:['genshin'],    emoji:'🍡', title:'Paimon não é comida de emergência!', msg:'Paimon é a melhor companheira do viajante! Respeita!', color:'#00838f', winTitle:'⭐ Genshin Impact' },
+    { words:['saitama'],    emoji:'👊', title:'One Punch!',                   msg:'Você deu um soco em um mosquito. Missão cumprida.', color:'#f57c00', winTitle:'👊 One Punch Man' },
+    { words:['luffy'],      emoji:'🍖', title:'Vou ser o Rei dos Piratas!',   msg:'O chapéu de palha tá garantido. Agora só falta o tesouro.', color:'#c62828', winTitle:'🏴‍☠️ Monkey D. Luffy' },
+    { words:['bleach'],     emoji:'⚔️', title:'BANKAI!',                     msg:'Sua zanpakutou evoluiu. Cuidado pra não cortar a mesinha.', color:'#4e342e', winTitle:'⚔️ Bleach' },
+    { words:['evangelion'], emoji:'🤖', title:'Get in the robot, Shinji.',    msg:'Você não tem escolha. Entre no EVA ou o site vai ficar vazio.', color:'#6a1b9a', winTitle:'🤖 Evangelion' },
+    { words:['dragonball'], emoji:'🟠', title:'Nível de poder: 9000+',        msg:'É MAIS DE 9000! O IT\'S OVER 9000!!!', color:'#e65100', winTitle:'🐉 Dragon Ball Z' },
+    { words:['sailormoon'], emoji:'🌙', title:'Em nome da Lua, eu vou te punir!', msg:'Você foi pego sendo fofo demais. Aceite sua sentença.', color:'#ec407a', winTitle:'🌙 Sailor Moon' },
+    { words:['cyberpunk'],  emoji:'🌆', title:'Wake up, samurai.',            msg:'Acorde, samurai. Temos uma cidade pra queimar. E um site pra explorar.', color:'#fbc02d', winTitle:'🌆 Cyberpunk 2077' },
+    { words:['hololive'],   emoji:'🎤', title:'Vtuber desbloqueada!',         msg:'Você destravou a categoria Vtuber. Agora pode fazer streams de 8 horas.', color:'#29b6f6', winTitle:'🎤 Hololive' }
+  ];
+
+  let typedBuffer = '';
+  document.addEventListener('keydown', e => {
+    if(e.key.length !== 1 || !/[a-zA-Z]/.test(e.key)) return;
+    typedBuffer += e.key.toLowerCase();
+    if(typedBuffer.length > 30) typedBuffer = typedBuffer.slice(-30);
+
+    for(let i = 0; i < animeEggs.length; i++){
+      const eg = animeEggs[i];
+      for(let j = 0; j < eg.words.length; j++){
+        if(typedBuffer.endsWith(eg.words[j])){
+          typedBuffer = '';
+          showAnimePopup(eg);
+          return;
+        }
+      }
+    }
+  });
+
+  /* ============================================================
      SENHA DO CONFIDENCIAL
      ============================================================ */
   function checarSenha(){
     const inp = document.getElementById('senhaInput');
     const msg = document.getElementById('senhaMsg');
     if(!inp || !msg) return;
-
     const val = inp.value.trim().toUpperCase();
     if(val === 'SEMPAI'){
       msg.style.color = '#008000';
@@ -1481,45 +2148,37 @@
   });
 
   /* ============================================================
-     YUME NAVI — Visual Novel
-     Senha final = "SEMPAI" (SE + MP + AI)
+     YUME NAVI
      ============================================================ */
-
   const personagens = [
     {
-      nome: 'Yuki',
-      tipo: 'tsundere',
+      nome: 'Yuki', tipo: 'tsundere',
       img: 'https://imgup.uk/proxy/?url=https://i.imgur.com/tUUZT7M.jpeg',
       cor: '#d63384',
       fala: '"B-baka! Não é como se eu quisesse te ajudar, tá? Mas... se acertar, eu te dou uma dica."',
       pergunta: 'Qual dessas é a frase clássica de uma tsundere?',
       opcoes: ['Baka!', 'Itadakimasu!', 'Yosh!'],
-      correta: 0,
-      fragmento: 'SE',
+      correta: 0, fragmento: 'SE',
       erro: 'N-não é isso, seu baka! Tenta de novo...'
     },
     {
-      nome: 'Hana',
-      tipo: 'yandere',
+      nome: 'Hana', tipo: 'yandere',
       img: 'https://imgup.uk/proxy/?url=https://i.imgur.com/FWT0Go6.jpeg',
       cor: '#8b008b',
       fala: '"Hehe... se você errar, eu vou ficar muito triste. Você não quer me ver triste, né?"',
       pergunta: 'O que é uma "yandere"?',
       opcoes: ['Cozinheira dedicada', 'Apaixonada obsessiva e possessiva', 'Estudiosa tímida'],
-      correta: 1,
-      fragmento: 'MP',
+      correta: 1, fragmento: 'MP',
       erro: 'Hehe... errou. Vou fingir que não vi. Tenta de novo.'
     },
     {
-      nome: 'Rei',
-      tipo: 'kuudere',
+      nome: 'Rei', tipo: 'kuudere',
       img: 'https://imgup.uk/proxy/?url=https://i.imgur.com/eFbdQiG.jpeg',
       cor: '#4682b4',
       fala: '"... (ela te encara em silêncio, esperando sua resposta)"',
       pergunta: 'O que significa "kuudere"?',
       opcoes: ['Frio(a) e calmo(a) por fora', 'Barulhento(a) e agitado(a)', 'Chorão(ona) e dramático(a)'],
-      correta: 0,
-      fragmento: 'AI',
+      correta: 0, fragmento: 'AI',
       erro: '... (silêncio desapontador). Tenta de novo.'
     }
   ];
@@ -1555,7 +2214,6 @@
           '<button class="btn" id="yumeReset">Jogar de novo</button>' +
           '<button class="btn" data-close>Fechar</button>' +
         '</div>';
-
       const reset = document.getElementById('yumeReset');
       if(reset) reset.addEventListener('click', () => {
         yumeState.atual = 0;
@@ -1566,14 +2224,12 @@
     }
 
     const p = personagens[yumeState.atual];
-
     body.innerHTML =
       '<div class="sunken" style="padding:6px 8px; margin-bottom:10px;">' +
         '<p style="margin:0; font-size:11px;"><b>Progresso:</b> ' +
           yumeState.obtidas.length + ' / ' + personagens.length + ' fragmentos' +
         '</p>' +
       '</div>' +
-
       '<div class="yume-perso">' +
         '<div class="yume-avatar"><img src="' + p.img + '" alt="' + escapeHtml(p.nome) + '"></div>' +
         '<div style="flex:1 1 auto;">' +
@@ -1583,7 +2239,6 @@
           '<p style="margin:0;">' + p.fala + '</p>' +
         '</div>' +
       '</div>' +
-
       '<div class="sunken" style="padding:10px;">' +
         '<p style="margin:0;"><b>' + p.pergunta + '</b></p>' +
         '<div class="yume-opcoes" id="yumeOpcoes">' +
@@ -1592,9 +2247,7 @@
           ).join('') +
         '</div>' +
       '</div>' +
-
       '<p id="yumeMsg" style="font-size:11px; margin:10px 0 0; min-height:16px;"></p>' +
-
       '<div style="margin-top:10px;">' +
         '<p style="margin:0 0 4px; font-size:11px;"><b>Fragmentos:</b></p>' +
         yumeInventarioHtml() +
@@ -1610,10 +2263,7 @@
           msg.textContent = '✅ Você ganhou o fragmento: "' + p.fragmento + '" — seguindo adiante...';
           btn.disabled = true;
           body.querySelectorAll('[data-opcao]').forEach(b => b.disabled = true);
-          setTimeout(() => {
-            yumeState.atual++;
-            renderYume();
-          }, 1200);
+          setTimeout(() => { yumeState.atual++; renderYume(); }, 1200);
         } else {
           msg.style.color = '#a00';
           msg.textContent = '❌ ' + p.erro;
@@ -1622,7 +2272,673 @@
     });
   }
 
+  /* ============================================================
+     SŌKAGLE — Navegador paródia
+     ============================================================ */
+  let skHistory = [];
+  let skHistoryIdx = -1;
+
+  function skNavigate(query, pushHistory){
+    if(pushHistory !== false){
+      skHistory = skHistory.slice(0, skHistoryIdx + 1);
+      skHistory.push(query);
+      skHistoryIdx = skHistory.length - 1;
+    }
+    const urlInput = document.getElementById('sokagleUrl');
+    if(urlInput) urlInput.value = query;
+
+    const q = (query || '').trim().toLowerCase();
+
+    if(q === '' || q === 'sokagle.com' || q === 'home' || q === 'início' || q === 'inicio'){
+      renderSokagleHome();
+      return;
+    }
+    if(q === 'sokakiko.com' || q === 'sōka kikō' || q === 'sokakiko'){
+      renderSokagleSite('Sōka Kikō Group LTD', 'sokakiko.com',
+        'A empresa pequenininha com um catálogo grande demais. Especialistas em arte, sites, memes e serviços gerais. Site oficial (esse aqui, no caso).');
+      return;
+    }
+    if(q === 'yumenavi.com' || q === 'yume navi'){
+      renderSokagleSite('Yume Navi — Beta', 'yumenavi.com',
+        'Visual novel gratuita. Fale com Yuki, Hana e Rei. Colete os fragmentos da senha.');
+      return;
+    }
+    if(q === 'senha' || q === 'confidencial'){
+      renderSokagleSite('Página super secreta', 'confidencial.sokakiko.com',
+        'Se você tá procurando a senha, o caminho é o Yume Navi. Boa sorte, samurai.');
+      return;
+    }
+
+    renderSokagleResults(query);
+  }
+
+  function renderSokagleHome(){
+    const content = document.getElementById('sokagleContent');
+    if(!content) return;
+    const urlInput = document.getElementById('sokagleUrl');
+    if(urlInput) urlInput.value = '';
+    content.innerHTML =
+      '<div class="sk-home">' +
+        '<div class="sk-logo">' +
+          '<span class="l1">S</span><span class="l2">ō</span><span class="l3">k</span>' +
+          '<span class="l4">a</span><span class="l5">g</span><span class="l6">l</span>' +
+          '<span class="l7">e</span>' +
+        '</div>' +
+        '<div class="sk-sub">A busca oficial da Sōka Kikō Group LTD</div>' +
+        '<div class="sk-search">' +
+          '<input type="text" id="skSearchInput" placeholder="Pesquise qualquer coisa..." autocomplete="off">' +
+          '<button id="skSearchBtn">Pesquisa Sōka</button>' +
+        '</div>' +
+        '<div class="sk-lucky" id="skLucky">Estou com sorte</div>' +
+        '<div style="margin-top:40px; color:#909090; font-size:11px;">' +
+          '🌐 Dica: digite <b>sokakiko.com</b>, <b>yumenavi.com</b> ou qualquer coisa que vier à mente.' +
+        '</div>' +
+      '</div>';
+
+    const inp = document.getElementById('skSearchInput');
+    const go  = () => skNavigate(inp ? inp.value : '');
+    if(inp) inp.addEventListener('keydown', e => {
+      if(e.key === 'Enter'){ e.preventDefault(); go(); }
+    });
+    const btn = document.getElementById('skSearchBtn');
+    if(btn) btn.addEventListener('click', go);
+    const lucky = document.getElementById('skLucky');
+    if(lucky) lucky.addEventListener('click', () => {
+      const opts = ['sokakiko.com','yumenavi.com','naruto','goku','jojo','onepiece','darksouls','undertale'];
+      skNavigate(opts[Math.floor(Math.random()*opts.length)]);
+    });
+    setTimeout(() => { if(inp) inp.focus(); }, 60);
+  }
+
+  function renderSokagleSite(title, url, snippet){
+    const content = document.getElementById('sokagleContent');
+    if(!content) return;
+    content.innerHTML =
+      '<div class="sk-results-header"><b>Página:</b> ' + escapeHtml(url) + '</div>' +
+      '<div style="max-width:640px;">' +
+        '<h1 style="font-size:22px; margin:0 0 10px;">' + escapeHtml(title) + '</h1>' +
+        '<p style="color:#303030; line-height:1.6;">' + escapeHtml(snippet) + '</p>' +
+        '<div style="margin-top:20px; padding:10px; background:#f4f4f4; font-size:11px; color:#606060; border-radius:2px;">' +
+          'Esta é uma página fake do navegador paródia. Não leve a sério.' +
+        '</div>' +
+      '</div>';
+  }
+
+  function renderSokagleResults(query){
+    const content = document.getElementById('sokagleContent');
+    if(!content) return;
+    const q = query.toLowerCase();
+    const results = [];
+    results.push({
+      url: 'sokakiko.com › ' + encodeURIComponent(q),
+      title: q + ' — Sōka Kikō Group LTD',
+      snippet: 'Resultado oficial da Sōka Kikō para "' + query + '". A gente não achou nada, mas fingimos que sim.'
+    });
+    results.push({
+      url: 'yumenavi.com › wiki › ' + encodeURIComponent(q),
+      title: q + ' — Yume Navi Wiki',
+      snippet: 'A Yuki acha que "' + query + '" é coisa de baka. A Hana riu. A Rei não falou nada.'
+    });
+    results.push({
+      url: 'forum.sokakiko.com › tópico',
+      title: 'Alguém sabe o que é "' + q + '"?',
+      snippet: 'Tópico de 47 páginas discutindo isso. A resposta é sempre SEMPAI. (Ou não.)'
+    });
+
+    if(q.includes('easter egg') || q.includes('segredo') || q.includes('senha')){
+      results.unshift({
+        url: 'confidencial.sokakiko.com',
+        title: '🔒 A senha tem 6 letras...',
+        snippet: 'Você tá no caminho certo! A senha tá guardada com as meninas do Yume Navi.'
+      });
+    }
+    if(q === 'ado'){
+      results.unshift({
+        url: 'ado.fandom.com',
+        title: 'Ado (cantora)',
+        snippet: 'A Ado é fã de karaokê. Aliás, você sabia que digitar "ado" no site libera uma surpresa?'
+      });
+    }
+    if(q === 'naruto' || q === 'goku' || q === 'jojo'){
+      results.unshift({
+        url: 'anime.fandom.com',
+        title: q.charAt(0).toUpperCase() + q.slice(1),
+        snippet: 'Digitando "' + q + '" no site, uma surpresa acontece. Tenta aí! 👀'
+      });
+    }
+
+    content.innerHTML =
+      '<div class="sk-results-header">' +
+        'Aproximadamente ' + (results.length * 137) + ' resultados (0,' +
+        (Math.floor(Math.random()*99)+1) + ' segundos)' +
+      '</div>' +
+      results.map(r =>
+        '<div class="sk-result">' +
+          '<div class="url">' + escapeHtml(r.url) + '</div>' +
+          '<div class="title">' + escapeHtml(r.title) + '</div>' +
+          '<p class="snippet">' + escapeHtml(r.snippet) + '</p>' +
+        '</div>'
+      ).join('');
+  }
+
+  const skHome = document.getElementById('skHome');
+  if(skHome) skHome.addEventListener('click', () => {
+    skHistory = []; skHistoryIdx = -1;
+    renderSokagleHome();
+  });
+  const skGo = document.getElementById('skGo');
+  if(skGo) skGo.addEventListener('click', () => {
+    const u = document.getElementById('sokagleUrl');
+    skNavigate(u ? u.value : '');
+  });
+  const skReload = document.getElementById('skReload');
+  if(skReload) skReload.addEventListener('click', () => {
+    if(skHistoryIdx >= 0){
+      skNavigate(skHistory[skHistoryIdx], false);
+    } else {
+      renderSokagleHome();
+    }
+  });
+  const skBack = document.getElementById('skBack');
+  if(skBack) skBack.addEventListener('click', () => {
+    if(skHistoryIdx > 0){
+      skHistoryIdx--;
+      skNavigate(skHistory[skHistoryIdx], false);
+    }
+  });
+  const skFwd = document.getElementById('skFwd');
+  if(skFwd) skFwd.addEventListener('click', () => {
+    if(skHistoryIdx < skHistory.length - 1){
+      skHistoryIdx++;
+      skNavigate(skHistory[skHistoryIdx], false);
+    }
+  });
+  const sokagleUrl = document.getElementById('sokagleUrl');
+  if(sokagleUrl) sokagleUrl.addEventListener('keydown', e => {
+    if(e.key === 'Enter'){ e.preventDefault(); skNavigate(e.target.value); }
+  });
+
   /* ---------- estado inicial ---------- */
+
+  /* ============================================================
+     SITES FICTÍCIOS DO SŌKAGLE
+     ============================================================ */
+  const ST_VIDEOS = [
+    {t:'Como fazer miojo sem queimar a casa',a:'Canal do Chef Zé',v:'2,3 mi',d:'12:47',i:'🍜',c:'#e74c3c'},
+    {t:'Ado - Karaokê ao vivo (10 horas)',a:'Ado Oficial BR',v:'8,1 mi',d:'10:00:00',i:'🎤',c:'#9b59b6'},
+    {t:'Respondendo perguntas idiotas por 20 min',a:'Sōka Kikō',v:'847 mil',d:'20:14',i:'❓',c:'#3498db'},
+    {t:'Top 10 memes de 2008 que envelheceram bem',a:'Memes do Vô',v:'1,2 mi',d:'15:32',i:'😂',c:'#f39c12'},
+    {t:'Por que o céu é azul? (explicação de 4 horas)',a:'Ciência em Casa',v:'312 mil',d:'4:02:11',i:'🌌',c:'#2c3e50'},
+    {t:'Dino game speedrun 100% (WR)',a:'Zé Corredor',v:'5,9 mi',d:'3:42',i:'🦖',c:'#27ae60'},
+    {t:'Tentando não rir - desafio IMPOSSÍVEL',a:'Risada Fácil',v:'12 mi',d:'8:15',i:'😹',c:'#e67e22'},
+    {t:'Unboxing do meu disquete de 1995',a:'Tec Retro',v:'98 mil',d:'18:03',i:'💾',c:'#95a5a6'}
+  ];
+  const SP_ARTIGOS = {
+    'sōka kikō': {titulo:'Sōka Kikō Group LTD', emoji:'🏢',
+      resumo:'Empresa fictícia, multinacional (não), fundada em 19XX (data incerta) com sede em algum lugar (não se sabe onde).',
+      secoes:[
+        {h:'História', p:'A Sōka Kikō foi fundada por ninguém em particular, num dia que ninguém lembra. Desde então vem prestando serviços que ninguém pediu, com uma qualidade que ninguém mediu. É considerada por muitos a empresa de meme mais séria do ramo.'},
+        {h:'Serviços', p:'Oferece arte, design, sites, consultoria criativa, curadoria de memes e serviços gerais. O slogan oficial é: "o que você precisar, a gente tenta".'},
+        {h:'Curiosidades', p:'• Nunca foi excluída da Lixeira (mesmo tentando 7 vezes)<br>• O site oficial tem mais de 30 easter eggs escondidos<br>• Ninguém nunca viu um funcionário de verdade'}
+      ]},
+    'ado': {titulo:'Ado', emoji:'🎤',
+      resumo:'Cantora japonesa famosa por covers de karaokê.',
+      secoes:[
+        {h:'Carreira', p:'Começou cantando em casa e agora canta no mundo inteiro. Ou algo assim.'},
+        {h:'Curiosidade', p:'Digitar "ado" no site principal libera uma surpresinha. Descubra você mesmo.'}
+      ]},
+    'yume navi': {titulo:'Yume Navi', emoji:'💗',
+      resumo:'Visual novel fictícia desenvolvida pela Sōka Kikō.',
+      secoes:[
+        {h:'Enredo', p:'Você conhece três garotas: Yuki (tsundere), Hana (yandere) e Rei (kuudere). Cada uma dá um fragmento de senha.'},
+        {h:'Como jogar', p:'Desbloqueie com 5 cliques no botão Iniciar do site principal.'}
+      ]}
+  };
+  const SF_SHOWS = [
+    {t:'Sōka Kikō: A Série',i:'🏢',c:'#c0392b'}, {t:'O Dilema do Zé',i:'🦖',c:'#27ae60'},
+    {t:'Sempaizinhos',i:'🌸',c:'#e91e63'}, {t:'Confidencial',i:'🔒',c:'#6a1b9a'},
+    {t:'Miojo Wars',i:'🍜',c:'#e67e22'}, {t:'Ado: Ao Vivo',i:'🎤',c:'#9b59b6'},
+    {t:'Memes de 2008',i:'😂',c:'#f39c12'}
+  ];
+  const SFO_POSTS = [
+    {t:'Alguém já achou o easter egg do dino?',u:'u/dino_lover',s:'r/sokakiko',v:847,c:'Passei 3 horas tentando e nada. Alguém me ajuda?'},
+    {t:'A senha tem 6 letras!!!',u:'u/curioso123',s:'r/sokakiko',v:1203,c:'Gente eu descobri que a senha tem SEIS letras. Isso muda tudo.'},
+    {t:'[TEORIA] A Sōka Kikō não existe',u:'u/teorico_anonimo',s:'r/conspiracoes',v:4210,c:'Sim, eu sei. Mas queria compartilhar minha teoria detalhada com 47 parágrafos.'},
+    {t:'Melhor meme do site?',u:'u/meme_king',s:'r/sokakiko',v:312,c:'Voto no popup do "que preguiça". Simples, direto, eficaz.'},
+    {t:'Como fazer miojo perfeito?',u:'u/chef_amador',s:'r/culinaria',v:1876,c:'Já tentei tudo, sempre fica mole. HELP.'}
+  ];
+
+  function renderSokatube(query){
+    const c = document.getElementById('sokagleContent'); if(!c) return;
+    const q = (query||'').toLowerCase().trim();
+    const lista = q ? ST_VIDEOS.filter(v=>v.t.toLowerCase().includes(q)||v.a.toLowerCase().includes(q)) : ST_VIDEOS;
+    c.innerHTML = '<div class="st-page">' +
+      '<div class="st-head">' +
+        '<div class="st-logo" id="stHome">Sōka<span>tube</span></div>' +
+        '<div class="st-search"><input type="text" id="stQ" placeholder="Pesquisar no Sōkatube..." value="' + escapeHtml(query||'') + '"><button id="stGo">🔍</button></div>' +
+      '</div>' +
+      (lista.length===0 ?
+        '<div style="padding:60px 20px;text-align:center;color:#606060"><div style="font-size:64px;margin-bottom:20px">😕</div>' +
+        '<p>Nenhum vídeo encontrado para "' + escapeHtml(query) + '"</p>' +
+        '<p style="font-size:12px">Mas relaxa, o algoritmo sempre tem algo pra recomendar.</p>' +
+        '<div style="margin-top:20px"><button class="kbtn" id="stRandom">🎲 Ver vídeos aleatórios</button></div></div>'
+        :
+        '<div class="st-grid">' + lista.map(v=>'<div class="st-card" data-idx="' + ST_VIDEOS.indexOf(v) + '">' +
+          '<div class="st-thumb" style="background:linear-gradient(135deg,' + v.c + ',' + v.c + '99)">' + v.i + '</div>' +
+          '<div class="st-title">' + escapeHtml(v.t) + '</div>' +
+          '<div class="st-meta">' + escapeHtml(v.a) + ' • ' + v.v + ' viz • ' + v.d + '</div></div>').join('') +
+        '</div>'
+      ) + '</div>';
+    const inp = document.getElementById('stQ');
+    const go = () => { const v = inp.value.trim(); skNavigate(v ? 'sokatube:' + v : 'sokatube.com'); };
+    if(inp) inp.addEventListener('keydown', e=>{ if(e.key==='Enter'){ e.preventDefault(); go(); } });
+    const b = document.getElementById('stGo'); if(b) b.addEventListener('click', go);
+    const h = document.getElementById('stHome'); if(h) h.addEventListener('click', ()=>skNavigate('sokatube.com'));
+    const r = document.getElementById('stRandom'); if(r) r.addEventListener('click', ()=>skNavigate('sokatube.com'));
+    c.querySelectorAll('.st-card').forEach(el=>{
+      el.addEventListener('click', ()=>{ const v = ST_VIDEOS[parseInt(el.dataset.idx,10)]; if(v) renderSokatubeVideo(v); });
+    });
+  }
+
+  function renderSokatubeVideo(v){
+    const c = document.getElementById('sokagleContent'); if(!c) return;
+    c.innerHTML = '<div class="st-page">' +
+      '<div class="st-head"><div class="st-logo" id="stHome2">Sōka<span>tube</span></div></div>' +
+      '<div class="st-video">' +
+        '<div class="st-player" style="background:linear-gradient(135deg,' + v.c + ',' + v.c + '99)">' +
+          '<div class="st-player-icon">' + v.i + '</div><div class="st-play">▶</div>' +
+          '<div class="st-bar"><div class="st-bar-fill"></div></div>' +
+        '</div>' +
+        '<h1 style="font-size:20px;margin:0 0 6px">' + escapeHtml(v.t) + '</h1>' +
+        '<p style="color:#606060;font-size:13px;margin:0 0 16px">' + escapeHtml(v.a) + ' • ' + v.v + ' visualizações • ' + v.d + '</p>' +
+        '<div style="background:#f9f9f9;padding:14px;border-radius:8px;font-size:13px;color:#303030;line-height:1.6">' +
+          'Este é um vídeo fictício do Sōkatube. Nenhum vídeo real foi reproduzido, mas a gente espera que você tenha se divertido com a ideia.' +
+        '</div>' +
+        '<div style="margin-top:20px"><button class="kbtn" id="stBack">← Voltar aos vídeos</button></div>' +
+      '</div></div>';
+    document.getElementById('stHome2').addEventListener('click', ()=>skNavigate('sokatube.com'));
+    document.getElementById('stBack').addEventListener('click', ()=>skNavigate('sokatube.com'));
+  }
+
+  function renderSokapedia(slug){
+    const c = document.getElementById('sokagleContent'); if(!c) return;
+    const key = (slug||'').toLowerCase().trim();
+    const a = SP_ARTIGOS[key] || SP_ARTIGOS['sōka kikō'];
+    c.innerHTML = '<div class="sp-wrap">' +
+      '<div class="sp-head"><div class="sp-head-logo" id="spHome">Sōkapédia</div>' +
+      '<input type="text" id="spQ" placeholder="Pesquisar na Sōkapédia..." value="' + escapeHtml(slug||'') + '"></div>' +
+      '<div class="sp-page">' +
+        '<div class="sp-info"><h3>' + escapeHtml(a.titulo) + '</h3><div class="thumb">' + a.emoji + '</div>' +
+        '<p><b>Tipo:</b> verbete fictício<br><b>Status:</b> não verificado<br><b>Fonte:</b> nenhuma</p></div>' +
+        '<h1>' + escapeHtml(a.titulo) + '</h1>' +
+        '<p><i>' + escapeHtml(a.resumo) + '</i></p>' +
+        a.secoes.map(s=>'<h2>' + escapeHtml(s.h) + '</h2><p>' + s.p + '</p>').join('') +
+        '<p style="margin-top:30px;font-size:12px;color:#606060"><i>Este é um verbete fictício da Sōkapédia. Não leve a sério.</i></p>' +
+      '</div></div>';
+    const q = document.getElementById('spQ');
+    const go = () => { const v = q.value.trim(); skNavigate(v ? 'sokapedia:' + v : 'sokapedia.com'); };
+    if(q) q.addEventListener('keydown', e=>{ if(e.key==='Enter'){ e.preventDefault(); go(); } });
+    document.getElementById('spHome').addEventListener('click', ()=>skNavigate('sokapedia.com'));
+  }
+
+  function renderSokaflix(){
+    const c = document.getElementById('sokagleContent'); if(!c) return;
+    const linhas = [
+      {n:'Em alta agora', items: SF_SHOWS},
+      {n:'Originais Sōka Kikō', items: SF_SHOWS.slice(0,4)},
+      {n:'Continue assistindo', items: SF_SHOWS.slice(2,6)},
+      {n:'Porque você clicou em algo', items: SF_SHOWS.slice(1,5)}
+    ];
+    c.innerHTML = '<div class="sf-page">' +
+      '<div class="sf-head"><div class="sf-logo">SŌKAFLIX</div></div>' +
+      linhas.map(l=>'<div class="sf-row"><h3>' + l.n + '</h3><div class="sf-carousel">' +
+        l.items.map(s=>'<div class="sf-card" style="background:linear-gradient(135deg,' + s.c + ',' + s.c + '99)" title="' + escapeHtml(s.t) + '">' + s.i + '<span>' + escapeHtml(s.t) + '</span></div>').join('') +
+      '</div></div>').join('') +
+      '<div style="padding:20px 30px;color:#808080;font-size:12px">Catálogo fictício. Nada aqui é real, mas a nostalgia é gratuita.</div></div>';
+    c.querySelectorAll('.sf-card').forEach(el=>{
+      el.addEventListener('click', ()=>alert('Esse título não está disponível na sua região. Nem em nenhuma outra.'));
+    });
+  }
+
+  function renderSokaForum(){
+    const c = document.getElementById('sokagleContent'); if(!c) return;
+    c.innerHTML = '<div class="sfo-page">' +
+      '<div class="sfo-head"><div class="sfo-logo">SōkaForum</div><span style="font-size:12px;color:#606060">a comunidade oficial (?)</span></div>' +
+      SFO_POSTS.map(p=>'<div class="sfo-post">' +
+        '<div class="sfo-votes"><span class="up">▲</span><span>' + p.v + '</span><span style="color:#7193ff;font-size:18px;cursor:pointer">▼</span></div>' +
+        '<div class="sfo-post-body"><h4>' + escapeHtml(p.t) + '</h4><p>' + escapeHtml(p.c) + '</p>' +
+        '<div class="meta">' + escapeHtml(p.s) + ' • postado por ' + escapeHtml(p.u) + '</div></div></div>').join('') +
+      '<div style="max-width:720px;text-align:center;padding:20px;color:#606060;font-size:12px">Fim dos posts. Volte amanhã pra mais drama fictício.</div></div>';
+  }
+
+  /* ---- Substitui skNavigate (mantém tudo do antigo + novos sites) ---- */
+  skNavigate = function(query, pushHistory){
+    if(pushHistory !== false){
+      skHistory = skHistory.slice(0, skHistoryIdx + 1);
+      skHistory.push(query);
+      skHistoryIdx = skHistory.length - 1;
+    }
+    const urlInput = document.getElementById('sokagleUrl');
+    if(urlInput) urlInput.value = query;
+
+    const q = (query || '').trim().toLowerCase();
+
+    if(q === '' || q === 'sokagle.com' || q === 'home' || q === 'início' || q === 'inicio'){ renderSokagleHome(); return; }
+    if(q === 'sokatube.com' || q === 'sokatube' || q === 'youtube'){ renderSokatube(''); return; }
+    if(q.startsWith('sokatube:')){ renderSokatube(q.slice(9)); return; }
+    if(q === 'sokapedia.com' || q === 'sokapedia' || q === 'wikipedia' || q === 'wiki'){ renderSokapedia(''); return; }
+    if(q.startsWith('sokapedia:')){ renderSokapedia(q.slice(10)); return; }
+    if(q === 'sokaflix.com' || q === 'sokaflix' || q === 'netflix'){ renderSokaflix(); return; }
+    if(q === 'forum.sokakiko.com' || q === 'forum' || q === 'reddit'){ renderSokaForum(); return; }
+    if(q === 'sokakiko.com' || q === 'sōka kikō' || q === 'sokakiko'){
+      renderSokagleSite('Sōka Kikō Group LTD', 'sokakiko.com', 'A empresa pequenininha com um catálogo grande demais. Especialistas em arte, sites, memes e serviços gerais.');
+      return;
+    }
+    if(q === 'yumenavi.com' || q === 'yume navi'){
+      renderSokagleSite('Yume Navi — Beta', 'yumenavi.com', 'Visual novel gratuita. Fale com Yuki, Hana e Rei. Colete os fragmentos da senha.');
+      return;
+    }
+    if(q === 'senha' || q === 'confidencial'){
+      renderSokagleSite('Página super secreta', 'confidencial.sokakiko.com', 'Se você tá procurando a senha, o caminho é o Yume Navi. Boa sorte, samurai.');
+      return;
+    }
+    renderSokagleResults(query);
+  };
+
+  /* ---- Substitui renderSokagleResults (agora com vídeos, wiki, links clicáveis) ---- */
+  renderSokagleResults = function(query){
+    const content = document.getElementById('sokagleContent'); if(!content) return;
+    const q = query.toLowerCase().trim();
+
+    let html = '<div class="sk-results-header">Aproximadamente ' +
+      (Math.floor(Math.random()*9000)+1000).toLocaleString('pt-BR') + ' resultados (0,' +
+      (Math.floor(Math.random()*90)+10) + ' segundos)</div>';
+
+    // Bloco de vídeo em destaque
+    if(/video|vídeo|youtube|sokatube|assistir|ver|dino|ado|miojo/.test(q)){
+      const v = ST_VIDEOS[Math.floor(Math.random()*ST_VIDEOS.length)];
+      html += '<div class="gr-widget"><div class="thumb" style="background:linear-gradient(135deg,' + v.c + ',' + v.c + '99);color:#fff">' + v.i + '</div>' +
+        '<div style="flex:1"><h4>' + escapeHtml(v.t) + '</h4><p>' + escapeHtml(v.a) + ' • ' + v.v + ' visualizações</p>' +
+        '<div class="gr-sitelinks"><a data-go="sokatube:' + escapeHtml(q) + '">▶ Ver no Sōkatube</a></div></div></div>';
+    }
+
+    html +=
+      '<div class="gr-result">' +
+        '<div class="gr-sitename"><div class="gr-fav">🏢</div>sokakiko.com</div>' +
+        '<div class="gr-url">https://sokakiko.com › ' + encodeURIComponent(q) + '</div>' +
+        '<div class="gr-title" data-go="sokakiko.com">' + escapeHtml(query) + ' — Sōka Kikō Group LTD</div>' +
+        '<p class="gr-snippet">Resultado oficial da Sōka Kikō para "' + escapeHtml(query) + '". A gente não achou nada específico, mas vamos fingir que sim pra não te deixar na mão.</p>' +
+      '</div>' +
+      '<div class="gr-result">' +
+        '<div class="gr-sitename"><div class="gr-fav">📚</div>sokapedia.com</div>' +
+        '<div class="gr-url">https://sokapedia.com › wiki › ' + encodeURIComponent(q) + '</div>' +
+        '<div class="gr-title" data-go="sokapedia:' + escapeHtml(q) + '">' + escapeHtml(query) + ' — Sōkapédia, a enciclopédia livre (nem tanto)</div>' +
+        '<p class="gr-snippet">Verbete da Sōkapédia sobre "' + escapeHtml(query) + '". A informação é duvidosa, mas o esforço foi sincero.</p>' +
+        '<div class="gr-sitelinks"><a data-go="sokapedia:' + escapeHtml(q) + '">📖 Ler o artigo completo</a>' +
+        '<a data-go="sokapedia:sōka kikō">🏢 Ver sobre Sōka Kikō</a></div>' +
+      '</div>' +
+      '<div class="gr-result">' +
+        '<div class="gr-sitename"><div class="gr-fav">▶️</div>sokatube.com</div>' +
+        '<div class="gr-url">https://sokatube.com › results › ' + encodeURIComponent(q) + '</div>' +
+        '<div class="gr-title" data-go="sokatube:' + escapeHtml(q) + '">Vídeos sobre "' + escapeHtml(query) + '" — Sōkatube</div>' +
+        '<p class="gr-snippet">Vídeos, tutoriais, memes e podcasts sobre "' + escapeHtml(query) + '". Alguns bons, outros nem tanto.</p>' +
+        '<div class="gr-sitelinks"><a data-go="sokatube:' + escapeHtml(q) + '">▶ Buscar vídeos</a>' +
+        '<a data-go="sokatube.com">🏠 Ir pro Sōkatube</a></div>' +
+      '</div>' +
+      '<div class="gr-result">' +
+        '<div class="gr-sitename"><div class="gr-fav">💬</div>forum.sokakiko.com</div>' +
+        '<div class="gr-url">https://forum.sokakiko.com › t › ' + encodeURIComponent(q) + '</div>' +
+        '<div class="gr-title" data-go="forum.sokakiko.com">Alguém já perguntou isso? — SōkaForum</div>' +
+        '<p class="gr-snippet">Tópico de 47 páginas discutindo exatamente "' + escapeHtml(query) + '". A resposta final sempre é "depende".</p>' +
+      '</div>' +
+      '<div class="gr-result">' +
+        '<div class="gr-sitename"><div class="gr-fav">🎬</div>sokaflix.com</div>' +
+        '<div class="gr-url">https://sokaflix.com › search</div>' +
+        '<div class="gr-title" data-go="sokaflix.com">Filmes e séries sobre "' + escapeHtml(query) + '" — Sōkaflix</div>' +
+        '<p class="gr-snippet">Explore o catálogo do Sōkaflix. Tudo fictício, mas o preço também é.</p>' +
+      '</div>';
+
+    if(/easter egg|segredo|senha/.test(q)){
+      html = '<div class="gr-result" style="background:#fffbe6;padding:14px;border-radius:6px;border:1px solid #f9e2a3">' +
+        '<div class="gr-sitename"><div class="gr-fav">🔒</div>confidencial.sokakiko.com</div>' +
+        '<div class="gr-title" data-go="confidencial.sokakiko.com">🔒 Você tá no caminho certo...</div>' +
+        '<p class="gr-snippet">A senha tem 6 letras e tá guardada com as meninas do Yume Navi. Vai lá!</p></div>' + html;
+    }
+
+    content.innerHTML = '<div class="results">' + html + '</div>';
+    content.querySelectorAll('[data-go]').forEach(el=>{
+      el.addEventListener('click', ()=>skNavigate(el.dataset.go));
+    });
+  };
+
+  /* ============================================================
+     EXPLORADOR DE ARQUIVOS
+     ============================================================ */
+  const FS = {
+    'desktop': { nome:'Área de Trabalho', ic:'🖥️', parent:null, itens:[] },
+    'computer': { nome:'Meu Computador', ic:'💻', parent:null, itens:['c','a','downloads','documents','images','music'] },
+    'c': { nome:'Disco Local (C:)', ic:'💾', parent:'computer', itens:['programas','windows','users'] },
+    'a': { nome:'Disquete 3½ (A:)', ic:'💿', parent:'computer', itens:['backup_1995.bak'] },
+    'downloads': { nome:'Downloads', ic:'📥', parent:'computer', itens:['musica_final_FINAL_v2.mp3','meme_top_secreto.png','backup_do_site_95.zip','senha_do_confidencial.txt','ado_karaoke_ao_vivo.mp4'] },
+    'documents': { nome:'Meus Documentos', ic:'📄', parent:'computer', itens:['projetos_final_v2_FINAL','carta_para_o_ze.doc','receita_miojo.txt'] },
+    'images': { nome:'Minhas Imagens', ic:'🖼️', parent:'computer', itens:['screenshot_1.png','screenshot_2.png','meme.png'] },
+    'music': { nome:'Minhas Músicas', ic:'🎵', parent:'computer', itens:['ado_karaoke.mp3','musica_triste.mp3'] },
+    'programas': { nome:'Arquivos de Programas', ic:'📦', parent:'c', itens:['sokagle','sokaflix','sokatube'] },
+    'windows': { nome:'Windows', ic:'🪟', parent:'c', itens:['system32','notepad.exe','mine.exe'] },
+    'users': { nome:'Usuários', ic:'👥', parent:'c', itens:['funcionario.soka'] },
+    'funcionario.soka': { nome:'funcionario.soka', ic:'👤', parent:'users', itens:[] },
+    'sokagle': { nome:'Sōkagle', ic:'🌐', parent:'programas', itens:['sokagle.exe'] },
+    'sokaflix': { nome:'Sōkaflix', ic:'🎬', parent:'programas', itens:['sokaflix.exe'] },
+    'sokatube': { nome:'Sōkatube', ic:'▶️', parent:'programas', itens:['sokatube.exe'] },
+    'system32': { nome:'System32', ic:'⚙️', parent:'windows', itens:['kernel.dll','hal.dll','nao_mexa_aqui.txt'] }
+  };
+
+  const expState = { atual:'computer', hist:['computer'], idx:0 };
+  const expPathEl = document.getElementById('expPath');
+  const expSideEl = document.getElementById('expSide');
+  const expContentEl = document.getElementById('expContent');
+  const expStatusEl = document.getElementById('expStatus');
+
+  function expRender(){
+    if(!expContentEl) return;
+    const node = FS[expState.atual];
+    if(!node) return;
+
+    // Caminho
+    const path = [];
+    let cur = node;
+    while(cur){ path.unshift(cur); cur = cur.parent ? FS[cur.parent] : null; }
+    expPathEl.innerHTML = path.map((n, i) =>
+      '<span class="crumb" data-go="' + n.nome.toLowerCase().replace(/\W/g,'') + '">' + n.ic + ' ' + n.nome + '</span>' +
+      (i < path.length-1 ? '<span class="sep">›</span>' : '')
+    ).join('');
+    // fallback: deixa o último como atual mesmo sem data-go
+    expPathEl.querySelectorAll('.crumb').forEach((el, i) => {
+      el.addEventListener('click', () => {
+        const alvo = path[i];
+        const key = Object.keys(FS).find(k => FS[k] === alvo);
+        if(key) expNavigate(key);
+      });
+    });
+
+    // Árvore lateral
+    const tree = ['desktop','computer','c','a','downloads','documents','images','music'];
+    expSideEl.innerHTML = tree.map(k => {
+      const n = FS[k]; if(!n) return '';
+      return '<div class="node' + (k === expState.atual ? ' active' : '') + '" data-side="' + k + '">' +
+             '<span class="ic">' + n.ic + '</span>' + n.nome + '</div>';
+    }).join('');
+    expSideEl.querySelectorAll('[data-side]').forEach(el => {
+      el.addEventListener('click', () => expNavigate(el.dataset.side));
+    });
+
+    // Conteúdo
+    expContentEl.innerHTML = node.itens.map(nome => {
+      const isFolder = FS[nome];
+      const ic = isFolder ? FS[nome].ic : (nome.endsWith('.mp3') ? '🎵' :
+                  nome.endsWith('.png') ? '🖼️' :
+                  nome.endsWith('.zip') ? '🗜️' :
+                  nome.endsWith('.mp4') ? '🎬' :
+                  nome.endsWith('.txt') ? '📄' :
+                  nome.endsWith('.exe') ? '⚙️' :
+                  nome.endsWith('.dll') ? '🧩' : '📄');
+      const rotulo = isFolder ? FS[nome].nome : nome;
+      return '<div class="exp-item" data-item="' + nome + '">' +
+             '<div class="ic">' + ic + '</div><div class="nm">' + rotulo + '</div></div>';
+    }).join('');
+
+    expContentEl.querySelectorAll('.exp-item').forEach(el => {
+      el.addEventListener('click', ev => {
+        expContentEl.querySelectorAll('.exp-item').forEach(x => x.classList.remove('sel'));
+        el.classList.add('sel');
+        expStatusEl.textContent = FS[el.dataset.item] ? 'Pasta — ' + el.dataset.item : 'Arquivo — ' + el.dataset.item;
+      });
+      el.addEventListener('dblclick', () => {
+        const key = el.dataset.item;
+        if(FS[key]) { expNavigate(key); }
+        else { expStatusEl.textContent = 'Não dá pra abrir "' + key + '". Foi mal.'; }
+      });
+    });
+
+    expStatusEl.textContent = node.itens.length + ' itens';
+  }
+
+  function expNavigate(key){
+    if(!FS[key]) return;
+    expState.hist = expState.hist.slice(0, expState.idx + 1);
+    expState.hist.push(key);
+    expState.idx = expState.hist.length - 1;
+    expState.atual = key;
+    expRender();
+  }
+
+  document.getElementById('expBack')?.addEventListener('click', () => {
+    if(expState.idx > 0){ expState.idx--; expState.atual = expState.hist[expState.idx]; expRender(); }
+  });
+  document.getElementById('expFwd')?.addEventListener('click', () => {
+    if(expState.idx < expState.hist.length - 1){ expState.idx++; expState.atual = expState.hist[expState.idx]; expRender(); }
+  });
+  document.getElementById('expUp')?.addEventListener('click', () => {
+    const p = FS[expState.atual]?.parent;
+    if(p) expNavigate(p);
+  });
+  document.getElementById('expReload')?.addEventListener('click', expRender);
+
+  /* ============================================================
+     ÍCONES ARRASTÁVEIS
+     ============================================================ */
+  function initIconDragging(){
+    const iconsWrap = document.getElementById('icons');
+    if(!iconsWrap) return;
+    const icons = Array.from(iconsWrap.querySelectorAll('.dicon'));
+    // Sem persistência: sempre começa em grade do zero
+    localStorage.removeItem('sokaIconPos');
+    iconsWrap.style.cssText = 'position:absolute; inset:0; pointer-events:none;';
+
+    const ICON_W = 86, ICON_H = 96, PAD_X = 10, PAD_Y = 10;
+    const maxRows = Math.max(1, Math.floor((window.innerHeight - 60) / ICON_H));
+    let curCol = 0, curRow = 0;
+
+    icons.forEach((ic, i) => {
+      const id = ic.dataset.open;
+      // sempre calcula posição em grade — nunca usa salvo
+      let pos = { x: PAD_X + curCol * ICON_W, y: PAD_Y + curRow * ICON_H };
+      curRow++;
+      if(curRow >= maxRows){ curRow = 0; curCol++; }
+      ic.style.position = 'absolute';
+      ic.style.left = pos.x + 'px';
+      ic.style.top  = pos.y + 'px';
+      ic.style.pointerEvents = 'auto';
+      ic.style.width = ICON_W + 'px';
+      ic.style.cursor = 'default';
+      ic.style.zIndex = 1;
+
+      let dragging = false, sx = 0, sy = 0, ox = 0, oy = 0, pid = null, moved = false;
+
+      ic.addEventListener('pointerdown', e => {
+        if(e.button !== 0) return;
+        dragging = true; moved = false;
+        pid = e.pointerId;
+        sx = e.clientX; sy = e.clientY;
+        ox = parseInt(ic.style.left, 10) || 0;
+        oy = parseInt(ic.style.top, 10) || 0;
+        ic.classList.add('dragging');
+        ic.setPointerCapture(pid);
+        e.preventDefault();
+        e.stopPropagation();
+      });
+
+      ic.addEventListener('pointermove', e => {
+        if(!dragging || e.pointerId !== pid) return;
+        const dx = e.clientX - sx;
+        const dy = e.clientY - sy;
+        if(Math.abs(dx) > 3 || Math.abs(dy) > 3) moved = true;
+        const nx = Math.max(0, Math.min(ox + dx, window.innerWidth - ICON_W));
+        const ny = Math.max(0, Math.min(oy + dy, window.innerHeight - 60 - ICON_H));
+        ic.style.left = nx + 'px';
+        ic.style.top  = ny + 'px';
+      });
+
+      const endDrag = e => {
+        if(!dragging) return;
+        dragging = false;
+        ic.classList.remove('dragging');
+        try { ic.releasePointerCapture(pid); } catch(_) {}
+
+        // Grid snapping estilo Windows
+        const col = Math.round((parseInt(ic.style.left,10) - PAD_X) / ICON_W);
+        const row = Math.round((parseInt(ic.style.top,10)  - PAD_Y) / ICON_H);
+        const snapX = PAD_X + Math.max(0, col) * ICON_W;
+        const snapY = PAD_Y + Math.max(0, row) * ICON_H;
+        ic.style.left = snapX + 'px';
+        ic.style.top  = snapY + 'px';
+
+        // Evita dois ícones na mesma célula
+        const ocupadas = {};
+        icons.forEach(outro => {
+          if(outro === ic) return;
+          const k = outro.style.left + '|' + outro.style.top;
+          ocupadas[k] = outro;
+        });
+        while(ocupadas[ic.style.left + '|' + ic.style.top]){
+          // empurra pra próxima linha
+          const y = parseInt(ic.style.top,10) + ICON_H;
+          const maxY = window.innerHeight - 60 - ICON_H;
+          if(y > maxY){ ic.style.left = (parseInt(ic.style.left,10) + ICON_W) + 'px'; ic.style.top = PAD_Y + 'px'; }
+          else { ic.style.top = y + 'px'; }
+        }
+
+        if(moved){
+          
+        } else {
+          openWindow(id);
+          document.querySelectorAll('.dicon').forEach(x => x.classList.remove('sel'));
+          ic.classList.add('sel');
+          closeStart();
+        }
+      };      ic.addEventListener('pointerup', endDrag);
+      ic.addEventListener('pointercancel', endDrag);
+
+      // bloqueia o clique global quando o ícone foi arrastado
+      ic.addEventListener('click', e => {
+        if(moved){
+          e.stopPropagation();
+          e.preventDefault();
+          moved = false;
+        }
+      }, true);
+    });
+
+    // Duplo clique continua funcionando (mas como o pointerup já abre, deixamos só por segurança)
+    document.addEventListener('dblclick', e => {
+      const ic = e.target.closest('.dicon[data-open]');
+      if(ic) openWindow(ic.dataset.open);
+    });
+  }
+
+  // Inicializa
+  setTimeout(initIconDragging, 50);
+
   openWindow('sobre');
 })();
 </script>
