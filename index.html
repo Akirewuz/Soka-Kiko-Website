@@ -837,6 +837,33 @@
   #icons > .dicon{ position:absolute; touch-action:none; }
   #icons > .dicon.dragging{ opacity:.6; z-index:999; }
   
+    /* ============ PAPEL DE PAREDE PERSONALIZADO ============ */
+  #desktop.has-wallpaper{
+    background-image: var(--custom-wallpaper);
+    background-size: 100% 100%;       /* estica tudo */
+    background-position: center;
+    background-repeat: no-repeat;
+    image-rendering: pixelated;       /* deixa blockudo */
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+  }
+  /* camada de "CRT velho" por cima */
+  #desktop.has-wallpaper::before{
+    content:'';
+    position:absolute; inset:0;
+    background:
+      repeating-linear-gradient(to bottom,
+        rgba(0,0,0,.08) 0 1px,
+        transparent 1px 3px);
+    pointer-events:none;
+    z-index: 0;
+  }
+  /* garante que ícones e janelas fiquem acima do efeito */
+  #desktop.has-wallpaper > *{
+    position: relative;
+    z-index: 1;
+  }
+  
   @media (max-width:640px){
     .window:not(.maximized){
       left:4px !important; top:4px !important;
@@ -1169,6 +1196,8 @@
 
 <div id="ctxMenu"></div>
 
+<input type="file" id="wallpaperInput" accept="image/*" style="display:none">
+
 <div id="moonEgg" title="clique para acordar">
   <img src="https://art.ngfiles.com/images/5737000/5737865_833606_rapscallionjones_untitled-5737865.989e53498f6eefced03e390edc305c8e.png" alt="Lua de Soul Eater">
 </div>
@@ -1291,6 +1320,12 @@
     const login = document.getElementById('bsLogin');
     const loginBtn = document.getElementById('bsLoginBtn');
     if(!boot) return;
+
+    if(!boot) return;
+
+    // Reset do menu de contexto (evita aparecer clicado no boot)
+    const ctxReset = document.getElementById('ctxMenu');
+    if(ctxReset){ ctxReset.style.display = 'none'; ctxReset.innerHTML = ''; }
 
     // Reset visual (importante pra reboot)
     boot.classList.remove('off');
@@ -1683,26 +1718,35 @@
     } else {
       items = [
         { label:'Organizar ícones', icon:'🗂️', action:()=>{
+          // Reorganiza na grade e salva no localStorage
           const wrap = document.getElementById('icons');
           if(!wrap) return;
           const ICON_W = 86, ICON_H = 96, PAD_X = 10, PAD_Y = 10;
           const maxRows = Math.max(1, Math.floor((window.innerHeight - 60) / ICON_H));
           let col = 0, row = 0;
+          const all = {};
           wrap.querySelectorAll(':scope > .dicon').forEach(ic => {
-            ic.style.left = (PAD_X + col * ICON_W) + 'px';
-            ic.style.top  = (PAD_Y + row * ICON_H) + 'px';
+            const x = PAD_X + col * ICON_W;
+            const y = PAD_Y + row * ICON_H;
+            ic.style.left = x + 'px';
+            ic.style.top  = y + 'px';
+            all[ic.dataset.open] = { x, y };
             row++;
             if(row >= maxRows){ row = 0; col++; }
           });
+          localStorage.setItem('sokaIconPos', JSON.stringify(all));
         } },
-        { label:'Atualizar',        icon:'🔄', action:()=>{} },        { type:'sep' },
+        { label:'Atualizar',        icon:'🔄', action:()=>{} },
+        { type:'sep' },
+        { label:'Definir papel de parede...', icon:'🖼️', action:()=>wallpaperPick() },
+        { label:'Remover papel de parede',    icon:'🚫', action:()=>wallpaperClear() },
+        { type:'sep' },
         { label:'Colar', icon:'📋', disabled:true, shortcut:'Ctrl+V' },
         { label:'Novo',  icon:'📄', disabled:true },
         { type:'sep' },
         { label:'Propriedades',     icon:'📋', action:()=>openWindow('computador') }
       ];
     }
-
     // Monta primeiro (escondido) pra medir tamanho real
     buildCtxMenu(items);
     ctxMenu.style.visibility = 'hidden';
@@ -2938,6 +2982,43 @@
 
   // Inicializa
   setTimeout(initIconDragging, 50);
+
+  /* ============================================================
+     PAPEL DE PAREDE PERSONALIZADO
+     ============================================================ */
+  const wallpaperInput = document.getElementById('wallpaperInput');
+
+  function wallpaperApply(dataURL){
+    const desk = document.getElementById('desktop');
+    desk.style.setProperty('--custom-wallpaper', 'url("' + dataURL + '")');
+    desk.classList.add('has-wallpaper');
+    try { localStorage.setItem('sokaWallpaper', dataURL); } catch(_){}
+  }
+  function wallpaperPick(){
+    if(wallpaperInput){ wallpaperInput.value = ''; wallpaperInput.click(); }
+  }
+  function wallpaperClear(){
+    const desk = document.getElementById('desktop');
+    desk.classList.remove('has-wallpaper');
+    desk.style.removeProperty('--custom-wallpaper');
+    try { localStorage.removeItem('sokaWallpaper'); } catch(_){}
+  }
+
+  if(wallpaperInput){
+    wallpaperInput.addEventListener('change', e => {
+      const f = e.target.files && e.target.files[0];
+      if(!f) return;
+      const reader = new FileReader();
+      reader.onload = ev => wallpaperApply(ev.target.result);
+      reader.readAsDataURL(f);
+    });
+  }
+
+  // Carrega o wallpaper salvo ao abrir
+  try {
+    const saved = localStorage.getItem('sokaWallpaper');
+    if(saved) wallpaperApply(saved);
+  } catch(_){}
 
   openWindow('sobre');
 })();
