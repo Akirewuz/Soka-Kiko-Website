@@ -1,0 +1,1630 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sōka Kikō Group LTD</title>
+<style>
+  :root{
+    --face:#c0c0c0;
+    --shadow:#808080;
+    --dark:#0a0a0a;
+    --light:#dfdfdf;
+    --white:#fff;
+    --navy:#000080;
+    --blue:#1084d0;
+    --desk:#008080;
+    --taskbar-h:30px;
+    --ui: 'MS Sans Serif','Tahoma','Geneva',sans-serif;
+  }
+  *{ box-sizing:border-box; }
+  html,body{
+    margin:0; height:100%; overflow:hidden;
+    font-family: var(--ui);
+    font-size:12px;
+    color:#000;
+    -webkit-font-smoothing:none;
+  }
+  #desktop{
+    position:fixed;
+    inset:0 0 var(--taskbar-h) 0;
+    background:var(--desk);
+    overflow:hidden;
+    user-select:none;
+  }
+  #icons{
+    position:absolute;
+    top:10px; left:10px;
+    display:flex;
+    flex-direction:column;
+    flex-wrap:wrap;
+    gap:6px;
+    max-height:calc(100% - 20px);
+    align-content:flex-start;
+  }
+  .dicon{
+    width:78px;
+    padding:6px 4px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:4px;
+    text-align:center;
+    color:#fff;
+    text-shadow:1px 1px 0 #000;
+    cursor:default;
+    border:1px dotted transparent;
+  }
+  .dicon .glyph{ font-size:30px; line-height:1; filter:drop-shadow(1px 1px 0 rgba(0,0,0,.5)); }
+  .dicon .lbl{ font-size:11px; padding:1px 3px; }
+  .dicon.sel .lbl{ background:var(--navy); outline:1px dotted #fff; }
+
+  .window{
+    position:absolute;
+    display:none;
+    flex-direction:column;
+    background:var(--face);
+    padding:3px;
+    max-height:calc(100% - 16px);
+    box-shadow:
+      inset -1px -1px var(--dark),
+      inset  1px  1px var(--light),
+      inset -2px -2px var(--shadow),
+      inset  2px  2px var(--white);
+  }
+  .window.maximized{
+    left:0 !important; top:0 !important;
+    width:100% !important; height:100% !important;
+    max-height:100% !important;
+  }
+  .titlebar{
+    display:flex;
+    align-items:center;
+    gap:4px;
+    height:20px;
+    padding:0 2px 0 3px;
+    background:linear-gradient(90deg,var(--shadow),#b5b5b5);
+    color:#d0d0d0;
+    font-weight:bold;
+    font-size:11px;
+    flex:0 0 auto;
+    cursor:default;
+    touch-action:none;
+  }
+  .window.active .titlebar{
+    background:linear-gradient(90deg,var(--navy),var(--blue));
+    color:#fff;
+  }
+  .tb-title{
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    padding-left:2px;
+  }
+  .tb-btns{ display:flex; gap:2px; margin-left:auto; }
+  .tb-btns button{
+    width:16px; height:14px;
+    padding:0;
+    display:grid; place-items:center;
+    background:var(--face);
+    border:0;
+    color:#000;
+    cursor:default;
+    box-shadow:
+      inset -1px -1px var(--dark),
+      inset  1px  1px var(--white),
+      inset -2px -2px var(--shadow),
+      inset  2px  2px var(--light);
+  }
+  .tb-btns button:active{
+    box-shadow:
+      inset  1px  1px var(--dark),
+      inset -1px -1px var(--white),
+      inset  2px  2px var(--shadow),
+      inset -2px -2px var(--light);
+  }
+  .tb-btns button svg{ display:block; }
+  .win-body{
+    flex:1 1 auto;
+    overflow:auto;
+    padding:8px;
+    user-select:text;
+  }
+  .sunken{
+    background:#fff;
+    box-shadow:
+      inset  1px  1px var(--shadow),
+      inset -1px -1px var(--white),
+      inset  2px  2px var(--dark),
+      inset -2px -2px var(--light);
+  }
+  .btn{
+    font-family:inherit;
+    font-size:12px;
+    min-width:75px;
+    padding:4px 12px;
+    background:var(--face);
+    border:0;
+    cursor:default;
+    box-shadow:
+      inset -1px -1px var(--dark),
+      inset  1px  1px var(--white),
+      inset -2px -2px var(--shadow),
+      inset  2px  2px var(--light);
+  }
+  .btn:active{
+    box-shadow:
+      inset  1px  1px var(--dark),
+      inset -1px -1px var(--white),
+      inset  2px  2px var(--shadow),
+      inset -2px -2px var(--light);
+  }
+  .btn:focus{ outline:1px dotted #000; outline-offset:-4px; }
+  h3{ font-size:13px; margin:0 0 4px; }
+  p{ margin:0 0 8px; line-height:1.5; }
+  p:last-child{ margin-bottom:0; }
+  .row{ display:flex; gap:10px; align-items:flex-start; }
+  .big-glyph{ font-size:38px; line-height:1; flex:0 0 auto; }
+  .field{ display:flex; gap:6px; align-items:center; margin-bottom:6px; }
+  .field label{ flex:0 0 62px; }
+  input[type=text], textarea{
+    font-family:inherit;
+    font-size:12px;
+    width:100%;
+    padding:3px 4px;
+    border:0;
+    background:#fff;
+    box-shadow:
+      inset  1px  1px var(--shadow),
+      inset -1px -1px var(--white),
+      inset  2px  2px var(--dark),
+      inset -2px -2px var(--light);
+  }
+  textarea{ resize:vertical; min-height:60px; }
+  .srv{
+    display:flex; gap:8px; align-items:flex-start;
+    padding:6px 8px;
+    border-bottom:1px solid #d8d8d8;
+  }
+  .srv:last-child{ border-bottom:0; }
+  .srv .g{ font-size:18px; line-height:1.2; }
+  .srv b{ display:block; }
+  .srv small{ color:#404040; }
+  .gal{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(96px,1fr));
+    gap:8px;
+  }
+  .art{ text-align:center; }
+  .art .thumb{
+    height:76px;
+    box-shadow:
+      inset  1px  1px var(--shadow),
+      inset -1px -1px var(--white),
+      inset  2px  2px var(--dark),
+      inset -2px -2px var(--light);
+  }
+  .art span{ display:block; font-size:10px; margin-top:4px; color:#303030; }
+  .win-link{
+    color:var(--navy);
+    text-decoration:underline;
+    cursor:pointer;
+  }
+  .win-link:visited{ color:#551a8b; }
+  .win-link:hover{ color:var(--blue); }
+  #taskbar{
+    position:fixed;
+    left:0; right:0; bottom:0;
+    height:var(--taskbar-h);
+    background:var(--face);
+    display:flex;
+    align-items:center;
+    gap:3px;
+    padding:2px 3px;
+    box-shadow: inset 0 1px var(--white), inset 0 2px var(--light);
+    z-index:9000;
+  }
+  #startbtn{
+    display:flex; align-items:center; gap:5px;
+    font-family:inherit;
+    font-size:12px;
+    font-weight:bold;
+    padding:3px 7px 3px 4px;
+    background:var(--face);
+    border:0;
+    cursor:default;
+    box-shadow:
+      inset -1px -1px var(--dark),
+      inset  1px  1px var(--white),
+      inset -2px -2px var(--shadow),
+      inset  2px  2px var(--light);
+  }
+  #startbtn:active, #startbtn.on{
+    box-shadow:
+      inset  1px  1px var(--dark),
+      inset -1px -1px var(--white),
+      inset  2px  2px var(--shadow),
+      inset -2px -2px var(--light);
+  }
+  .winlogo{
+    width:15px; height:15px;
+    background:
+      linear-gradient(#f65314,#f65314) 0 0 / 7px 7px no-repeat,
+      linear-gradient(#7cbb00,#7cbb00) 100% 0 / 7px 7px no-repeat,
+      linear-gradient(#00a1f1,#00a1f1) 0 100% / 7px 7px no-repeat,
+      linear-gradient(#ffbb00,#ffbb00) 100% 100% / 7px 7px no-repeat;
+  }
+  .tb-div{
+    width:3px; height:22px; margin:0 2px;
+    box-shadow: inset 1px 0 var(--shadow), inset 2px 0 var(--white);
+  }
+  #tasks{
+    display:flex;
+    gap:3px;
+    flex:1 1 auto;
+    overflow:hidden;
+  }
+  .taskbtn{
+    font-family:inherit;
+    font-size:11px;
+    max-width:170px;
+    min-width:120px;
+    padding:3px 8px;
+    text-align:left;
+    background:var(--face);
+    border:0;
+    cursor:default;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    box-shadow:
+      inset -1px -1px var(--dark),
+      inset  1px  1px var(--white),
+      inset -2px -2px var(--shadow),
+      inset  2px  2px var(--light);
+  }
+  .taskbtn.active{
+    font-weight:bold;
+    background-image:repeating-linear-gradient(45deg,#c0c0c0 0 2px,#b0b0b0 2px 4px);
+    box-shadow:
+      inset  1px  1px var(--dark),
+      inset -1px -1px var(--white),
+      inset  2px  2px var(--shadow),
+      inset -2px -2px var(--light);
+  }
+  #tray{
+    display:flex; align-items:center; gap:6px;
+    padding:2px 8px;
+    box-shadow: inset 1px 1px var(--shadow), inset 2px 2px var(--light);
+    font-size:11px;
+  }
+  #startmenu{
+    position:fixed;
+    left:3px; bottom:calc(var(--taskbar-h) + 2px);
+    width:216px;
+    display:none;
+    background:var(--face);
+    padding:3px;
+    z-index:9500;
+    box-shadow:
+      inset -1px -1px var(--dark),
+      inset  1px  1px var(--light),
+      inset -2px -2px var(--shadow),
+      inset  2px  2px var(--white);
+  }
+  #startmenu.open{ display:flex; }
+  .sm-side{
+    width:24px;
+    background:linear-gradient(0deg,var(--navy),var(--blue));
+    color:#c8c8c8;
+    writing-mode:vertical-rl;
+    transform:rotate(180deg);
+    display:grid;
+    place-items:center;
+    font-weight:bold;
+    font-size:14px;
+    letter-spacing:1px;
+    padding:8px 0;
+  }
+  .sm-items{ flex:1 1 auto; padding:2px 0; }
+  .sm-item{
+    display:flex; align-items:center; gap:9px;
+    padding:6px 10px;
+    font-size:12px;
+    cursor:default;
+  }
+  .sm-item .g{ font-size:16px; width:18px; text-align:center; }
+  .sm-item:hover{ background:var(--navy); color:#fff; }
+  .sm-sep{
+    height:0; margin:3px 4px;
+    border-top:1px solid var(--shadow);
+    border-bottom:1px solid var(--white);
+  }
+  #shutdown{
+    position:fixed; inset:0;
+    background:#000;
+    display:none;
+    place-items:center;
+    text-align:center;
+    color:#ffb000;
+    font-family:'Courier New',monospace;
+    font-size:clamp(18px,4vw,30px);
+    z-index:99999;
+    cursor:pointer;
+    padding:20px;
+  }
+  #shutdown.on{ display:grid; }
+  #shutdown small{ display:block; margin-top:24px; font-size:14px; color:#8a5f00; line-height:1.6; }
+
+  #moonEgg{
+    position:fixed; inset:0;
+    background:#000;
+    display:none;
+    place-items:center;
+    z-index:100000;
+    cursor:pointer;
+    animation: moonFadeIn .5s ease;
+  }
+  #moonEgg.on{ display:grid; }
+  #moonEgg img{
+    width:min(70vmin, 440px);
+    height:min(70vmin, 440px);
+    object-fit: contain;
+    animation: moonFloat 3s ease-in-out infinite;
+  }
+  @keyframes moonFadeIn{ from{ opacity:0; } to{ opacity:1; } }
+  @keyframes moonFloat{
+    0%,100%{ transform: translateY(0) rotate(-2deg); }
+    50%    { transform: translateY(-8px) rotate(2deg); }
+  }
+
+  #animeEgg{
+    position:fixed; inset:0;
+    background: rgba(0,0,0,.55);
+    display:none;
+    place-items:center;
+    z-index:99997;
+    padding:20px;
+  }
+  #animeEgg.on{ display:grid; }
+  .anime-dialog{
+    background: var(--face);
+    padding: 3px;
+    width: min(420px, 100%);
+    box-shadow:
+      inset -1px -1px var(--dark),
+      inset  1px  1px var(--light),
+      inset -2px -2px var(--shadow),
+      inset  2px  2px var(--white),
+      6px 6px 0 rgba(0,0,0,.4);
+    animation: popIn .35s cubic-bezier(.34, 1.56, .64, 1);
+  }
+  @keyframes popIn{
+    from{ transform: scale(.7); opacity:0; }
+    to  { transform: scale(1);  opacity:1; }
+  }
+
+  #adoEgg{
+    position:fixed; inset:0;
+    background: rgba(0,0,0,.85);
+    display:none;
+    place-items:center;
+    z-index:100001;
+    cursor:pointer;
+    padding:20px;
+  }
+  #adoEgg.on{ display:grid; }
+  #adoEgg img{
+    max-width:70vmin;
+    max-height:70vmin;
+    object-fit: contain;
+    animation: popIn .4s ease;
+  }
+
+  .popup-overlay{
+    position:fixed; inset:0;
+    background: rgba(0,0,0,.75);
+    display:none;
+    place-items:center;
+    padding:20px;
+  }
+  .popup-overlay.on{ display:grid; }
+  .popup-overlay .anime-dialog{ z-index: 100005; }
+
+  #spamEgg{ z-index:100002; }
+  #spamEgg img{
+    width:96px; height:96px; object-fit:cover;
+    box-shadow:
+      inset  1px  1px var(--shadow),
+      inset -1px -1px var(--white),
+      inset  2px  2px var(--dark),
+      inset -2px -2px var(--light);
+  }
+
+  #uwuEgg{ z-index:100004; }
+  #uwuEgg .uwu-emoji{
+    font-size: 64px;
+    text-align: center;
+    margin-bottom: 8px;
+    animation: uwuBounce 1s ease-in-out infinite;
+  }
+  @keyframes uwuBounce{
+    0%,100%{ transform: translateY(0); }
+    50%    { transform: translateY(-8px); }
+  }
+
+  #bsod{
+    position:fixed; inset:0;
+    background: #0000AA;
+    color: #fff;
+    display:none;
+    place-items:center;
+    text-align:center;
+    font-family: 'Courier New', monospace;
+    font-size: 16px;
+    z-index: 100003;
+    padding: 40px;
+    cursor: pointer;
+  }
+  #bsod.on{ display: grid; }
+  #bsod small{ display:block; margin-top: 20px; font-size: 12px; opacity: .7; }
+
+  #yumeBody .yume-perso{
+    display:flex; gap:12px; align-items:flex-start;
+    margin-bottom:12px;
+  }
+  #yumeBody .yume-avatar{
+    flex:0 0 auto;
+    width:88px; height:88px;
+    background:#fff;
+    box-shadow:
+      inset  1px  1px var(--shadow),
+      inset -1px -1px var(--white),
+      inset  2px  2px var(--dark),
+      inset -2px -2px var(--light);
+    overflow: hidden;
+  }
+  #yumeBody .yume-avatar img{
+    width:100%; height:100%; object-fit: cover; display: block;
+  }
+  #yumeBody .yume-nome{
+    font-weight:bold;
+    margin:0 0 4px;
+  }
+  #yumeBody .yume-opcoes{
+    display:flex; flex-direction:column; gap:6px;
+    margin-top:8px;
+  }
+  #yumeBody .yume-opcoes .btn{
+    text-align:left;
+    min-width:0;
+    width:100%;
+  }
+  #yumeBody .yume-inv{
+    display:flex; gap:6px; flex-wrap:wrap;
+    margin-top:8px;
+  }
+  #yumeBody .yume-inv span{
+    background:#fff;
+    padding:2px 8px;
+    font-weight:bold;
+    box-shadow:
+      inset  1px  1px var(--shadow),
+      inset -1px -1px var(--white),
+      inset  2px  2px var(--dark),
+      inset -2px -2px var(--light);
+  }
+
+  @media (max-width:640px){
+    .window:not(.maximized){
+      left:4px !important;
+      top:4px !important;
+      width:calc(100% - 8px) !important;
+      max-height:calc(100% - 8px);
+    }
+    .titlebar{ cursor:pointer; }
+    #icons{ gap:2px; }
+    .dicon{ width:70px; }
+    .taskbtn{ min-width:0; flex:1 1 0; }
+    .gal{ grid-template-columns:repeat(auto-fill,minmax(84px,1fr)); }
+  }
+</style>
+</head>
+<body>
+
+<div id="desktop">
+
+  <div id="icons">
+    <div class="dicon" data-open="sobre"><div class="glyph">🏢</div><div class="lbl">Sobre nós</div></div>
+    <div class="dicon" data-open="servicos"><div class="glyph">⚙️</div><div class="lbl">Serviços</div></div>
+    <div class="dicon" data-open="portfolio"><div class="glyph">🎨</div><div class="lbl">Portfólio</div></div>
+    <div class="dicon" data-open="contato"><div class="glyph">✉️</div><div class="lbl">Contato</div></div>
+    <div class="dicon" data-open="computador"><div class="glyph">🖥️</div><div class="lbl">Meu Computador</div></div>
+    <div class="dicon" data-open="lixeira"><div class="glyph">🗑️</div><div class="lbl">Lixeira</div></div>
+  </div>
+
+  <div class="window active" data-win="sobre" data-title="Sobre nós" style="left:70px; top:36px; width:420px;">
+    <div class="titlebar"><span class="tb-title">Sobre nós — Sōka Kikō Group LTD</span></div>
+    <div class="win-body">
+      <div class="row" style="margin-bottom:10px;">
+        <div class="big-glyph">🏢</div>
+        <div>
+          <h3 id="sobreTitulo">Sōka Kikō Group LTD</h3>
+          <p id="sobreDesc">Uma empresa pequenininha com um catálogo grande demais.</p>
+        </div>
+      </div>
+      <div class="sunken" style="padding:8px; margin-bottom:10px;">
+        <p><b>Fundação:</b> 19XX &nbsp;•&nbsp; <b>Sede:</b> em algum lugar</p>
+        <p><b>Funcionários:</b> poucos, mas dedicados</p>
+        <p><b>Especialidade:</b> fazer o que precisar</p>
+      </div>
+      <p>Fazemos arte, sites, consultoria criativa, curadoria de meme e o que mais aparecer na mesa. Somos aquele fornecedor que você chama quando o briefing é "não sei, algo legal".</p>
+      <p>Sobrevivemos a todos os crashes até agora.</p>
+      <div style="text-align:right; margin-top:12px;">
+        <button class="btn" data-close>OK</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="window" data-win="servicos" data-title="Serviços" style="left:170px; top:80px; width:400px;">
+    <div class="titlebar"><span class="tb-title">Serviços</span></div>
+    <div class="win-body">
+      <p>Escolha um. Ou todos. A gente dá um jeito.</p>
+      <div class="sunken">
+        <div class="srv"><div class="g">🎨</div><div><b>Arte &amp; Design</b><small>ilustração, identidade, banner, adesivo</small></div></div>
+        <div class="srv"><div class="g">🧠</div><div><b>Consultoria Criativa</b><small>brainstorm, naming, tirar ideia do papel</small></div></div>
+        <div class="srv"><div class="g">🖥️</div><div><b>Web &amp; Presença Digital</b><small>sites, landing pages, portfólios</small></div></div>
+        <div class="srv"><div class="g">😄</div><div><b>Memes &amp; Conteúdo</b><small>criação, curadoria, estratégia de zoeira</small></div></div>
+        <div class="srv"><div class="g">🛠️</div><div><b>Serviços Gerais</b><small>o que você precisar, a gente tenta</small></div></div>
+      </div>
+      <div style="text-align:right; margin-top:12px;">
+        <button class="btn" data-open="contato">Pedir orçamento</button>
+        <button class="btn" data-close>Fechar</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="window" data-win="portfolio" data-title="Portfólio" style="left:230px; top:54px; width:460px;">
+    <div class="titlebar"><span class="tb-title">Portfólio — trabalhos selecionados</span></div>
+    <div class="win-body">
+      <p>Uma amostra. O resto está no disquete.</p>
+      <div class="gal">
+        <div class="art"><div class="thumb" style="background:linear-gradient(135deg,#ff2e88,#7b1fa2)"></div><span>Cartaz 01</span></div>
+        <div class="art"><div class="thumb" style="background:linear-gradient(135deg,#00ffc8,#00796b)"></div><span>Logo</span></div>
+        <div class="art"><div class="thumb" style="background:linear-gradient(135deg,#ffb300,#e65100)"></div><span>Banner</span></div>
+        <div class="art"><div class="thumb" style="background:linear-gradient(135deg,#4fc3f7,#0d47a1)"></div><span>Site</span></div>
+        <div class="art"><div class="thumb" style="background:linear-gradient(135deg,#8bc34a,#33691e)"></div><span>Adesivo</span></div>
+        <div class="art"><div class="thumb" style="background:linear-gradient(135deg,#bdbdbd,#424242)"></div><span>Meme</span></div>
+      </div>
+      <div style="text-align:right; margin-top:14px;">
+        <button class="btn" data-close>Fechar</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="window" data-win="contato" data-title="Contato" style="left:300px; top:110px; width:390px;">
+    <div class="titlebar"><span class="tb-title">Contato</span></div>
+    <div class="win-body">
+      <div class="sunken" style="padding:8px; margin-bottom:12px;">
+        <p><b>E-mail:</b> <a class="win-link" href="mailto:httpszitto@gmail.com">httpszitto@gmail.com</a> <span style="color:#606060;">(sujeito a mudanças ksksk)</span></p>
+        <p><b>WhatsApp:</b> (00) 00000-0000</p>
+        <p style="color:#606060; font-size:11px;">(não colocamos nossos números reais, às vezes aparecerá um número virtual aqui!)</p>
+        <p><b>Horário:</b> quando a gente vê a mensagem</p>
+      </div>
+      <div class="field"><label>Nome:</label><input type="text" placeholder="Como te chamamos?"></div>
+      <div class="field"><label>E-mail:</label><input type="text" placeholder="seu@email.com"></div>
+      <div class="field" style="align-items:flex-start;">
+        <label style="padding-top:4px;">Mensagem:</label>
+        <textarea placeholder="Conta o que você precisa..."></textarea>
+      </div>
+      <div style="text-align:right; margin-top:10px;">
+        <button class="btn" id="btnEnviar">Enviar</button>
+        <button class="btn" data-close>Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="window" data-win="computador" data-title="Meu Computador" style="left:120px; top:150px; width:340px;">
+    <div class="titlebar"><span class="tb-title">Meu Computador</span></div>
+    <div class="win-body">
+      <div class="sunken" style="padding:12px;">
+        <div style="display:flex; gap:24px; flex-wrap:wrap;">
+          <div class="dicon" style="color:#000; text-shadow:none; width:auto;">
+            <div class="glyph">💾</div><div class="lbl">Disco local (C:)</div>
+          </div>
+          <div class="dicon" style="color:#000; text-shadow:none; width:auto;">
+            <div class="glyph">💿</div><div class="lbl">Disquete 3½ (A:)</div>
+          </div>
+        </div>
+      </div>
+      <p style="margin-top:10px; color:#303030;">3,5 GB livres de 4,0 GB</p>
+      <p style="color:#303030;">Pasta <b>projetos_final_v2_FINAL</b> não encontrada.</p>
+      <div style="text-align:right;">
+        <button class="btn" data-close>Fechar</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="window" data-win="lixeira" data-title="Erro" style="left:260px; top:190px; width:360px;">
+    <div class="titlebar"><span class="tb-title">Erro</span></div>
+    <div class="win-body">
+      <div class="row" style="margin-bottom:14px;">
+        <div class="big-glyph">⚠️</div>
+        <div>
+          <p>Não foi possível excluir <b>Sōka Kikō Group LTD</b>.</p>
+          <p>A empresa é permanente e não pode ser removida.</p>
+        </div>
+      </div>
+      <div style="text-align:right;">
+        <button class="btn" data-close>OK</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="window" data-win="ajuda" data-title="Ajuda" style="left:200px; top:170px; width:360px;">
+    <div class="titlebar"><span class="tb-title">Ajuda — Central de Suporte</span></div>
+    <div class="win-body">
+      <div class="row" style="margin-bottom:14px;">
+        <div class="big-glyph">❓</div>
+        <div>
+          <h3>Ajuda</h3>
+          <p>Eu n sei.</p>
+        </div>
+      </div>
+      <div style="text-align:right;">
+        <button class="btn" data-close>OK</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="window" data-win="anotacao" data-title="Anotação" style="left:340px; top:130px; width:390px;">
+    <div class="titlebar"><span class="tb-title">Anotação — o que você escreveu</span></div>
+    <div class="win-body">
+      <p>Você escreveu isso aqui embaixo. Se o formulário te deixou na mão, é só copiar:</p>
+      <textarea readonly id="resumoCampo" style="min-height:110px;"></textarea>
+      <div style="text-align:right; margin-top:8px;">
+        <button class="btn" id="btnCopiar" style="min-width:0;">Copiar</button>
+        <button class="btn" data-close>Fechar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ YUME NAVI (adicionado ao menu Iniciar automaticamente) ============ -->
+  <div class="window" data-win="yume" data-title="Yume Navi — beta" style="left:170px; top:60px; width:470px;">
+    <div class="titlebar"><span class="tb-title">Yume Navi — beta (Visual Novel)</span></div>
+    <div class="win-body" id="yumeBody"></div>
+  </div>
+
+  <!-- ============ CONFIDENCIAL ============ -->
+  <div class="window" data-win="confidencial" data-title="Sōka Kikō Confidencial" style="left:230px; top:100px; width:440px;">
+    <div class="titlebar"><span class="tb-title">Sōka Kikō Confidencial</span></div>
+    <div class="win-body">
+      <div class="row" style="margin-bottom:10px;">
+        <div class="big-glyph">🔒</div>
+        <div>
+          <h3>Área Restrita</h3>
+          <p>Esse setor da Sōka Kikō é <b>confidencial</b>. Só quem sabe a senha entra.</p>
+        </div>
+      </div>
+
+      <div class="sunken" style="padding:8px; margin-bottom:12px;">
+        <p style="font-size:11px; color:#404040; margin:0 0 6px;">
+          💡 <b>Dica:</b> a senha tem <b>6 letras</b>, é uma palavra japonesa bem
+          conhecida e tá guardada em pedaços por aí.
+        </p>
+        <p style="font-size:11px; color:#404040; margin:0;">
+          🎀 <b>Pista extra:</b> abra o <b>menu Iniciar</b> de novo — uma
+          surpresinha apareceu por lá... 💗
+        </p>
+      </div>
+
+      <div class="field">
+        <label>Senha:</label>
+        <input type="text" id="senhaInput" maxlength="12" placeholder="??????">
+      </div>
+      <p id="senhaMsg" style="font-size:11px; color:#a00; margin:0 0 8px; min-height:14px;"></p>
+
+      <div style="text-align:right;">
+        <button class="btn" id="btnSenha">Entrar</button>
+        <button class="btn" data-close>Fechar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ REVELADO ============ -->
+  <div class="window" data-win="revelado" data-title="Parabéns!" style="left:280px; top:140px; width:400px;">
+    <div class="titlebar"><span class="tb-title">Parabéns!</span></div>
+    <div class="win-body">
+      <div class="row" style="margin-bottom:14px;">
+        <div class="big-glyph">🎉</div>
+        <div>
+          <h3>Você achou o segredo!</h3>
+          <p>A verdade é que a <b>Sōka Kikō Group LTD</b> não existe. É só um site de meme feito com muito carinho.</p>
+          <p>Mas ei, você jogou um dating sim inteiro e digitou <b>SEMPAI</b>. Isso merece respeito. 💙</p>
+          <p style="color:#606060; font-size:11px;">Volte sempre. Tem mais escondido por aí...</p>
+        </div>
+      </div>
+      <div style="text-align:right;">
+        <button class="btn" data-close>OK</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div id="taskbar">
+  <button id="startbtn"><span class="winlogo"></span>Iniciar</button>
+  <div class="tb-div"></div>
+  <div id="tasks"></div>
+  <div id="tray"><span>🔊</span><span id="clock">00:00</span></div>
+</div>
+
+<div id="startmenu">
+  <div class="sm-side">Sōka Kikō 95</div>
+  <div class="sm-items" id="smItems">
+    <div class="sm-item" data-open="sobre"><span class="g">🏢</span>Sobre nós</div>
+    <div class="sm-item" data-open="servicos"><span class="g">⚙️</span>Serviços</div>
+    <div class="sm-item" data-open="portfolio"><span class="g">🎨</span>Portfólio</div>
+    <div class="sm-item" data-open="contato"><span class="g">✉️</span>Contato</div>
+    <div class="sm-item" data-open="computador"><span class="g">🖥️</span>Meu Computador</div>
+    <div class="sm-sep" id="smSepFinal"></div>
+    <div class="sm-item" data-open="ajuda"><span class="g">❓</span>Ajuda</div>
+    <div class="sm-item" id="smShutdown"><span class="g">🔌</span>Desligar...</div>
+  </div>
+</div>
+
+<div id="shutdown">
+  <div>
+    É seguro desligar o computador.
+    <small>
+      Liga de novo! Tem easter egg escondido por aí 👀
+      <br>
+      (clique em qualquer lugar para reiniciar)
+    </small>
+  </div>
+</div>
+
+<div id="moonEgg" title="clique para acordar">
+  <img src="https://art.ngfiles.com/images/5737000/5737865_833606_rapscallionjones_untitled-5737865.989e53498f6eefced03e390edc305c8e.png" alt="Lua de Soul Eater">
+</div>
+
+<div id="animeEgg">
+  <div class="anime-dialog">
+    <div class="titlebar">
+      <span class="tb-title">⚠️ Aviso do Sistema — Consumo de Energia</span>
+      <div class="tb-btns">
+        <button id="animeCloseBtn" title="Fechar">✕</button>
+      </div>
+    </div>
+    <div class="win-body">
+      <div class="row" style="margin-bottom:12px;">
+        <div style="flex:0 0 auto;">
+          <img src="https://imgup.uk/proxy/?url=https://i.imgur.com/1ymomO4.jpeg" alt="Garota de anime" style="width:96px; height:96px; object-fit:cover; border-radius:4px;">
+        </div>
+        <div>
+          <h3>Ei! Você ainda tá aí?</h3>
+          <p>Já faz <b>5 minutos</b> que você tá nessa tela, sabia? A Sōka Kikō é uma empresa pequena, mas a conta de luz não é!</p>
+          <p>Tá gastando energia elétrica à toa. Vai fazer outra coisa — ler um livro, tomar água, ver o sol... qualquer coisa! 😤</p>
+        </div>
+      </div>
+      <div style="text-align:right;">
+        <button class="btn" id="animeOkBtn">Tá bom, vou sair 😔</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="adoEgg">
+  <img src="https://imgup.uk/proxy/?url=https://i.imgur.com/XtkzANg.jpeg" alt="Ado">
+</div>
+
+<div id="spamEgg" class="popup-overlay">
+  <div class="anime-dialog">
+    <div class="titlebar">
+      <span class="tb-title">⚠️ ALERTA DO SISTEMA — Comportamento suspeito</span>
+      <div class="tb-btns">
+        <button id="spamCloseBtn" title="Fechar">✕</button>
+      </div>
+    </div>
+    <div class="win-body">
+      <div class="row" style="margin-bottom:12px;">
+        <div style="flex:0 0 auto;">
+          <img src="https://imgup.uk/proxy/?url=https://i.imgur.com/qJeUtcA.jpeg" alt="Preguiçoso">
+        </div>
+        <div>
+          <h3>Ah, então você é do tipo...</h3>
+          <p>...que fica spamando o teclado pra achar easter egg? <b>Que preguiça, hein!</b> 😒</p>
+          <p style="font-size:11px; color:#606060;">Aqui não tem nada. Vai procurar direito, com calma. Os bons easter eggs não vêm de spam.</p>
+        </div>
+      </div>
+      <div style="text-align:right;">
+        <button class="btn" id="spamOkBtn">Ok, desculpa 😔</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="uwuEgg" class="popup-overlay">
+  <div class="anime-dialog">
+    <div class="titlebar">
+      <span class="tb-title">💗 Notificação Fofa</span>
+      <div class="tb-btns">
+        <button id="uwuCloseBtn" title="Fechar">✕</button>
+      </div>
+    </div>
+    <div class="win-body">
+      <div class="uwu-emoji">(◕‿◕)</div>
+      <h3 style="text-align:center; color:#d63384;">owo uwu &gt;w&lt;</h3>
+      <p style="text-align:center;">Você digitou <b>"uwu"</b>. Aqui está um abraço virtual em forma de popup. 🤗</p>
+      <p style="text-align:center; font-size:11px; color:#606060;">Feito com amor pela Sōka Kikō Group LTD.</p>
+      <div style="text-align:right; margin-top:12px;">
+        <button class="btn" id="uwuOkBtn">Aww, obrigado 💕</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="bsod">
+  <div>
+    <p style="font-size: 24px; margin-bottom: 20px;">SŌKA KIKŌ GROUP LTD</p>
+    <p>Um problema foi detectado e o Windows foi encerrado para evitar danos ao seu computador.</p>
+    <p style="margin-top: 20px;">ERRO: <b>0x000000FF</b> — <i>EMPRESA_MEME_NAO_ENCONTRADA</i></p>
+    <p style="margin-top: 20px;">Pressione qualquer tecla para "reiniciar" o sistema.</p>
+    <small>(clique em qualquer lugar para continuar)</small>
+  </div>
+</div>
+
+<script>
+(function(){
+  const desktop  = document.getElementById('desktop');
+  const tasksEl  = document.getElementById('tasks');
+  const startBtn = document.getElementById('startbtn');
+  const startMenu= document.getElementById('startmenu');
+  const shutdown = document.getElementById('shutdown');
+  const moonEgg  = document.getElementById('moonEgg');
+  const animeEgg = document.getElementById('animeEgg');
+  const adoEgg   = document.getElementById('adoEgg');
+  const spamEgg  = document.getElementById('spamEgg');
+  const uwuEgg   = document.getElementById('uwuEgg');
+  const bsod     = document.getElementById('bsod');
+
+  const running = new Set();
+  let activeId = null;
+  let zTop = 10;
+
+  const el  = id => document.querySelector('.window[data-win="' + id + '"]');
+  const isTouch = window.matchMedia('(hover: none)').matches;
+
+  const contatoWin = el('contato');
+  const contatoBodyOriginal = contatoWin.querySelector('.win-body').innerHTML;
+
+  function escapeHtml(s){
+    return String(s).replace(/[&<>"']/g, c => ({
+      '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+    }[c]));
+  }
+
+  const ICONS = {
+    min:   '<svg width="8" height="8" viewBox="0 0 8 8" fill="currentColor"><rect x="1" y="5" width="6" height="2"/></svg>',
+    max:   '<svg width="8" height="8" viewBox="0 0 8 8"><rect x="0.5" y="0.5" width="7" height="7" fill="none" stroke="currentColor"/><rect x="1" y="1" width="6" height="2" fill="currentColor"/></svg>',
+    close: '<svg width="8" height="8" viewBox="0 0 8 8" stroke="currentColor" stroke-width="1.3"><path d="M1 1 L7 7 M7 1 L1 7"/></svg>'
+  };
+
+  document.querySelectorAll('.window').forEach(win => {
+    const bar = win.querySelector('.titlebar');
+    if(!bar) return;
+    const btns = document.createElement('div');
+    btns.className = 'tb-btns';
+    btns.innerHTML =
+      '<button data-act="min" title="Minimizar">'   + ICONS.min   + '</button>' +
+      '<button data-act="max" title="Maximizar">'   + ICONS.max   + '</button>' +
+      '<button data-act="close" title="Fechar">'    + ICONS.close + '</button>';
+    bar.appendChild(btns);
+
+    btns.addEventListener('click', e => {
+      const act = e.target.closest('button')?.dataset.act;
+      if(!act) return;
+      e.stopPropagation();
+      const id = win.dataset.win;
+      if(act === 'min')   minimizeWindow(id);
+      if(act === 'max')   toggleMax(id);
+      if(act === 'close') closeWindow(id);
+    });
+
+    makeDraggable(win);
+  });
+
+  function openWindow(id){
+    const w = el(id);
+    if(!w) return;
+    w.style.display = 'flex';
+    running.add(id);
+    focusWindow(id);
+    if(id === 'yume') renderYume();
+    if(id === 'confidencial'){
+      const inp = document.getElementById('senhaInput');
+      const msg = document.getElementById('senhaMsg');
+      if(inp) inp.value = '';
+      if(msg) msg.textContent = '';
+      setTimeout(() => { if(inp) inp.focus(); }, 60);
+    }
+  }
+
+  function openWindowBehind(id){
+    const w = el(id);
+    if(!w) return;
+    w.style.display = 'flex';
+    w.style.zIndex = 1;
+    running.add(id);
+    renderTasks();
+  }
+
+  function closeWindow(id){
+    const w = el(id);
+    if(!w) return;
+
+    if(id === 'contato'){
+      w.querySelector('.win-body').innerHTML = contatoBodyOriginal;
+    }
+
+    w.style.display = 'none';
+    w.classList.remove('maximized');
+    running.delete(id);
+    if(activeId === id) activeId = null;
+    renderTasks();
+  }
+
+  function minimizeWindow(id){
+    const w = el(id);
+    w.style.display = 'none';
+    if(activeId === id) activeId = null;
+    renderTasks();
+  }
+
+  function focusWindow(id){
+    const w = el(id);
+    activeId = id;
+    w.style.zIndex = ++zTop;
+    document.querySelectorAll('.window').forEach(x => x.classList.toggle('active', x === w));
+    renderTasks();
+  }
+
+  function toggleMax(id){
+    const w = el(id);
+    w.classList.toggle('maximized');
+    focusWindow(id);
+  }
+
+  function renderTasks(){
+    tasksEl.innerHTML = '';
+    running.forEach(id => {
+      const w = el(id);
+      if(!w) return;
+      const b = document.createElement('button');
+      b.className = 'taskbtn' + (activeId === id ? ' active' : '');
+      b.textContent = w.dataset.title;
+      b.title = w.dataset.title;
+      b.addEventListener('click', () => {
+        if(w.style.display === 'none')      openWindow(id);
+        else if(activeId === id)            minimizeWindow(id);
+        else                                focusWindow(id);
+      });
+      tasksEl.appendChild(b);
+    });
+  }
+
+  function makeDraggable(win){
+    const bar = win.querySelector('.titlebar');
+    if(!bar) return;
+    let dragging = false, sx = 0, sy = 0, ox = 0, oy = 0, pid = null;
+
+    bar.addEventListener('pointerdown', e => {
+      if(e.target.closest('.tb-btns')) return;
+      if(window.innerWidth <= 640) return;
+      if(win.classList.contains('maximized')) return;
+
+      focusWindow(win.dataset.win);
+      dragging = true;
+      pid = e.pointerId;
+      sx = e.clientX; sy = e.clientY;
+
+      const wr = win.getBoundingClientRect();
+      const dr = desktop.getBoundingClientRect();
+      ox = wr.left - dr.left;
+      oy = wr.top  - dr.top;
+
+      bar.setPointerCapture(pid);
+      e.preventDefault();
+    });
+
+    bar.addEventListener('pointermove', e => {
+      if(!dragging || e.pointerId !== pid) return;
+      const dr = desktop.getBoundingClientRect();
+      let nx = ox + (e.clientX - sx);
+      let ny = oy + (e.clientY - sy);
+      nx = Math.max(-win.offsetWidth + 90, Math.min(nx, dr.width  - 50));
+      ny = Math.max(0,                     Math.min(ny, dr.height - 24));
+      win.style.left = nx + 'px';
+      win.style.top  = ny + 'px';
+    });
+
+    const end = () => {
+      if(!dragging) return;
+      dragging = false;
+      try { bar.releasePointerCapture(pid); } catch(_) {}
+    };
+    bar.addEventListener('pointerup', end);
+    bar.addEventListener('pointercancel', end);
+  }
+
+  document.addEventListener('click', e => {
+    const opener = e.target.closest('[data-open]');
+    if(opener){
+      openWindow(opener.dataset.open);
+      closeStart();
+      return;
+    }
+    const closer = e.target.closest('[data-close]');
+    if(closer){
+      closeWindow(closer.closest('.window').dataset.win);
+      return;
+    }
+  });
+
+  document.querySelectorAll('.dicon[data-open]').forEach(ic => {
+    ic.addEventListener('click', () => {
+      document.querySelectorAll('.dicon').forEach(x => x.classList.remove('sel'));
+      ic.classList.add('sel');
+      if(isTouch) openWindow(ic.dataset.open);
+    });
+    ic.addEventListener('dblclick', () => openWindow(ic.dataset.open));
+  });
+
+  function closeStart(){
+    startMenu.classList.remove('open');
+    startBtn.classList.remove('on');
+  }
+
+  startBtn.addEventListener('click', e => {
+    e.stopPropagation();
+    startMenu.classList.toggle('open');
+    startBtn.classList.toggle('on', startMenu.classList.contains('open'));
+  });
+
+  document.addEventListener('click', e => {
+    if(!e.target.closest('#startmenu') && !e.target.closest('#startbtn')) closeStart();
+  });
+
+  /* ============================================================
+     DESLIGAR + LUA
+     ============================================================ */
+  let shutdownTimers = [];
+  function clearShutdownTimers(){
+    shutdownTimers.forEach(clearTimeout);
+    shutdownTimers = [];
+  }
+  function showShutdown(){
+    shutdown.classList.add('on');
+    clearShutdownTimers();
+    shutdownTimers.push(setTimeout(() => {
+      moonEgg.classList.add('on');
+      shutdownTimers.push(setTimeout(() => {
+        moonEgg.classList.remove('on');
+      }, 8000));
+    }, 20000));
+  }
+  function hideShutdown(){
+    shutdown.classList.remove('on');
+    moonEgg.classList.remove('on');
+    clearShutdownTimers();
+  }
+  document.getElementById('smShutdown').addEventListener('click', () => {
+    closeStart();
+    showShutdown();
+  });
+  shutdown.addEventListener('click', hideShutdown);
+  moonEgg.addEventListener('click', hideShutdown);
+
+  /* ============================================================
+     ENVIAR (formulário de contato)
+     ============================================================ */
+  document.addEventListener('click', e => {
+    if(!e.target.closest('#btnEnviar')) return;
+
+    const win    = el('contato');
+    const inputs = win.querySelectorAll('input');
+    const nome   = (inputs[0].value || '').trim();
+    const email  = (inputs[1].value || '').trim();
+    const msg    = (win.querySelector('textarea').value || '').trim();
+    const body   = win.querySelector('.win-body');
+
+    const assunto = 'Contato site Sōka Kikō' + (nome ? ' — ' + nome : '');
+    const corpo   = (msg || '(sem mensagem)') +
+                    '\n\n---\nDe: ' + (nome || '(sem nome)') +
+                    (email ? ' <' + email + '>' : '');
+    const mailto  = 'mailto:httpszitto@gmail.com' +
+                    '?subject=' + encodeURIComponent(assunto) +
+                    '&body='    + encodeURIComponent(corpo);
+
+    const resumo = 'Nome: '     + (nome  || '(vazio)') + '\n' +
+                   'E-mail: '   + (email || '(vazio)') + '\n' +
+                   'Mensagem:\n' + (msg   || '(vazia)');
+
+    body.innerHTML =
+      '<div class="row" style="margin-bottom:14px;">' +
+        '<div class="big-glyph">✅</div>' +
+        '<div>' +
+          '<h3>Mensagem enviada!</h3>' +
+          '<p>Brincadeira. Este formulário não vai a lugar nenhum — ' +
+            'manda de verdade em ' +
+            '<a class="win-link" href="' + mailto + '">httpszitto@gmail.com</a>.' +
+          '</p>' +
+          '<p style="color:#606060; font-size:11px;">' +
+            'O link já abre seu e-mail com assunto e mensagem preenchidos.' +
+          '</p>' +
+          '<p style="color:#606060; font-size:11px;">' +
+            'Não confia no seu cliente de e-mail? Tem uma janela <b>Anotação</b> ' +
+            'aberta aí na barra de tarefas com tudo que você escreveu — é só copiar.' +
+          '</p>' +
+        '</div>' +
+      '</div>' +
+      '<div style="text-align:right;">' +
+        '<button class="btn" data-close>OK</button>' +
+      '</div>';
+
+    const anot  = el('anotacao');
+    const abody = anot.querySelector('.win-body');
+    abody.innerHTML =
+      '<p>Você escreveu isso aqui embaixo. Se o formulário te deixou na mão, é só copiar:</p>' +
+      '<textarea readonly id="resumoCampo" style="min-height:110px;">' +
+        escapeHtml(resumo) +
+      '</textarea>' +
+      '<div style="text-align:right; margin-top:8px;">' +
+        '<button class="btn" id="btnCopiar" style="min-width:0;">Copiar</button>' +
+        '<button class="btn" data-close>Fechar</button>' +
+      '</div>';
+
+    abody.querySelector('#btnCopiar').addEventListener('click', ev => {
+      const campo = abody.querySelector('#resumoCampo');
+      campo.focus();
+      campo.select();
+      campo.setSelectionRange(0, campo.value.length);
+
+      let ok = false;
+      try {
+        if(navigator.clipboard && navigator.clipboard.writeText){
+          navigator.clipboard.writeText(campo.value);
+          ok = true;
+        }
+      } catch(_) {}
+      if(!ok){
+        try { ok = document.execCommand('copy'); } catch(_) {}
+      }
+
+      const b = ev.currentTarget;
+      b.textContent = ok ? 'Copiado!' : 'Ctrl+C';
+      setTimeout(() => { b.textContent = 'Copiar'; }, 1500);
+    });
+
+    openWindowBehind('anotacao');
+  });
+
+  /* ============================================================
+     RELÓGIO
+     ============================================================ */
+  function tick(){
+    const d = new Date();
+    document.getElementById('clock').textContent =
+      String(d.getHours()).padStart(2,'0') + ':' + String(d.getMinutes()).padStart(2,'0');
+  }
+  tick();
+  setInterval(tick, 15000);
+
+  /* ============================================================
+     EASTER EGG 1: KONAMI → RICKROLL
+     ============================================================ */
+  const KONAMI = [
+    'ArrowUp','ArrowUp','ArrowDown','ArrowDown',
+    'ArrowLeft','ArrowRight','ArrowLeft','ArrowRight',
+    'b','a'
+  ];
+  let konamiPos = 0;
+  document.addEventListener('keydown', e => {
+    const k = e.key.length === 1 ? e.key.toLowerCase() : e.key;
+    const esperado = KONAMI[konamiPos];
+    if(k === esperado){
+      konamiPos++;
+      if(konamiPos === KONAMI.length){
+        konamiPos = 0;
+        window.location.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
+      }
+    } else {
+      konamiPos = (k === KONAMI[0]) ? 1 : 0;
+    }
+  });
+
+  /* ============================================================
+     EASTER EGG 2: 5 MIN → GAROTA DE ANIME
+     ============================================================ */
+  function showAnimeEgg(){ animeEgg.classList.add('on'); }
+  function hideAnimeEgg(){ animeEgg.classList.remove('on'); }
+  setTimeout(showAnimeEgg, 5 * 60 * 1000);
+  document.getElementById('animeOkBtn').addEventListener('click', hideAnimeEgg);
+  document.getElementById('animeCloseBtn').addEventListener('click', hideAnimeEgg);
+
+  /* ============================================================
+     EASTER EGG 3: "ado" → IMAGEM DA ADO
+     ============================================================ */
+  const ADO = 'ado';
+  let adoPos = 0;
+  function hideAdoEgg(){ adoEgg.classList.remove('on'); }
+  document.addEventListener('keydown', e => {
+    const k = e.key.length === 1 ? e.key.toLowerCase() : e.key;
+    if(k === ADO[adoPos]){
+      adoPos++;
+      if(adoPos === ADO.length){
+        adoPos = 0;
+        adoEgg.classList.add('on');
+      }
+    } else {
+      adoPos = (k === ADO[0]) ? 1 : 0;
+    }
+  });
+  adoEgg.addEventListener('click', hideAdoEgg);
+
+  /* ============================================================
+     EASTER EGG 4: TECLA END → GAROTA DE ANIME
+     ============================================================ */
+  document.addEventListener('keydown', e => {
+    if(e.key === 'End') showAnimeEgg();
+  });
+
+  /* ============================================================
+     EASTER EGG 5: SPAM DE TECLADO → POPUP
+     ============================================================ */
+  let teclasRecentes = [];
+  document.addEventListener('keydown', e => {
+    if(e.key.length === 1 && /[a-zA-Z0-9]/.test(e.key)){
+      const agora = Date.now();
+      teclasRecentes.push(agora);
+      teclasRecentes = teclasRecentes.filter(t => agora - t < 2000);
+      if(teclasRecentes.length >= 10){
+        teclasRecentes = [];
+        spamEgg.classList.add('on');
+      }
+    }
+  });
+  document.getElementById('spamOkBtn').addEventListener('click', () => spamEgg.classList.remove('on'));
+  document.getElementById('spamCloseBtn').addEventListener('click', () => spamEgg.classList.remove('on'));
+
+  /* ============================================================
+     EASTER EGG 6: BSOD (3 cliques no Meu Computador)
+     ============================================================ */
+  let cliqueComputador = 0;
+  let timerComputador = null;
+  const iconeComputador = document.querySelector('.dicon[data-open="computador"]');
+  if(iconeComputador){
+    iconeComputador.addEventListener('click', () => {
+      cliqueComputador++;
+      clearTimeout(timerComputador);
+      if(cliqueComputador >= 3){
+        cliqueComputador = 0;
+        bsod.classList.add('on');
+      } else {
+        timerComputador = setTimeout(() => { cliqueComputador = 0; }, 1000);
+      }
+    });
+  }
+  bsod.addEventListener('click', () => bsod.classList.remove('on'));
+
+  /* ============================================================
+     EASTER EGG 7: MENU SECRETO
+     5 cliques no Iniciar → item "Sōka Kikō Confidencial" aparece.
+     ============================================================ */
+  let cliqueIniciar = 0;
+  let timerIniciar = null;
+  startBtn.addEventListener('click', () => {
+    cliqueIniciar++;
+    clearTimeout(timerIniciar);
+    if(cliqueIniciar >= 5){
+      cliqueIniciar = 0;
+      if(!document.getElementById('smSecreto')){
+        const sep = document.createElement('div');
+        sep.className = 'sm-sep';
+        const item = document.createElement('div');
+        item.className = 'sm-item';
+        item.id = 'smSecreto';
+        item.innerHTML = '<span class="g">🔒</span>Sōka Kikō Confidencial';
+        item.addEventListener('click', () => {
+          closeStart();
+          // JÁ libera o Yume Navi no menu Iniciar
+          adicionarYumeNaviAoMenu();
+          openWindow('confidencial');
+        });
+        const menuItems = document.getElementById('smItems');
+        menuItems.appendChild(sep);
+        menuItems.appendChild(item);
+      }
+    } else {
+      timerIniciar = setTimeout(() => { cliqueIniciar = 0; }, 2000);
+    }
+  });
+
+  /* ============================================================
+     YUME NAVI adicionado ao menu Iniciar (chamado automaticamente)
+     ============================================================ */
+  function adicionarYumeNaviAoMenu(){
+    if(document.getElementById('smYume')) return;
+    const menuItems = document.getElementById('smItems');
+    const sep = document.createElement('div');
+    sep.className = 'sm-sep';
+    sep.id = 'smYumeSep';
+    const item = document.createElement('div');
+    item.className = 'sm-item';
+    item.id = 'smYume';
+    item.innerHTML = '<span class="g">💗</span>Yume Navi';
+    item.addEventListener('click', () => {
+      closeStart();
+      openWindow('yume');
+    });
+    // Insere logo antes do separador final (antes de Ajuda/Desligar)
+    const sepFinal = document.getElementById('smSepFinal');
+    if(sepFinal){
+      menuItems.insertBefore(sep,  sepFinal);
+      menuItems.insertBefore(item, sepFinal);
+    } else {
+      menuItems.appendChild(sep);
+      menuItems.appendChild(item);
+    }
+  }
+
+  /* ============================================================
+     EASTER EGG 8: DIGITAR "uwu" → POPUP FOFO
+     ============================================================ */
+  const UWU = 'uwu';
+  let uwuPos = 0;
+  document.addEventListener('keydown', e => {
+    const k = e.key.length === 1 ? e.key.toLowerCase() : e.key;
+    if(k === UWU[uwuPos]){
+      uwuPos++;
+      if(uwuPos === UWU.length){
+        uwuPos = 0;
+        uwuEgg.classList.add('on');
+      }
+    } else {
+      uwuPos = (k === UWU[0]) ? 1 : 0;
+    }
+  });
+  document.getElementById('uwuOkBtn').addEventListener('click', () => uwuEgg.classList.remove('on'));
+  document.getElementById('uwuCloseBtn').addEventListener('click', () => uwuEgg.classList.remove('on'));
+
+  /* ============================================================
+     EASTER EGG 9: 7 CLIQUES NA LIXEIRA
+     ============================================================ */
+  let cliquesLixeira = 0;
+  const iconeLixeira = document.querySelector('.dicon[data-open="lixeira"]');
+  if(iconeLixeira){
+    iconeLixeira.addEventListener('click', () => {
+      cliquesLixeira++;
+      if(cliquesLixeira >= 7){
+        cliquesLixeira = 0;
+        const win = el('lixeira');
+        if(win){
+          const body = win.querySelector('.win-body');
+          body.innerHTML =
+            '<div class="row" style="margin-bottom:14px;">' +
+              '<div class="big-glyph">🗑️</div>' +
+              '<div>' +
+                '<h3>Tá bom, tá vazio.</h3>' +
+                '<p>Você clicou <b>7 vezes</b> na Lixeira. Não tem nada aqui. A empresa não pode ser excluída, e nem você deveria estar tentando tanto assim.</p>' +
+                '<p style="color:#606060; font-size:11px;">Vai procurar easter egg em outro lugar. Sério. 😒</p>' +
+              '</div>' +
+            '</div>' +
+            '<div style="text-align:right;">' +
+              '<button class="btn" data-close>OK</button>' +
+            '</div>';
+          openWindow('lixeira');
+        }
+      }
+    });
+  }
+
+  /* ============================================================
+     EASTER EGG 10: 3 CLIQUES NO TÍTULO "Sobre nós"
+     ============================================================ */
+  const sobreTitulo = document.getElementById('sobreTitulo');
+  const sobreDesc   = document.getElementById('sobreDesc');
+  let cliquesTitulo = 0;
+  const titulosAlt = [
+    { t: 'Sōka Kikō Group LTD',   d: 'Uma empresa pequenininha com um catálogo grande demais.' },
+    { t: 'Sōka Kikō Group V.O.I.D.', d: 'Nós não existimos oficialmente. Finge que não viu.' },
+    { t: 'Sōka Kikō Group ∞',      d: 'Uma empresa eterna num servidor temporário.' },
+    { t: 'Sōka Kikō Group LTD',    d: 'Tá bom, pode parar de clicar. A piada acabou.' }
+  ];
+  if(sobreTitulo){
+    sobreTitulo.style.cursor = 'pointer';
+    sobreTitulo.addEventListener('click', () => {
+      cliquesTitulo = (cliquesTitulo + 1) % titulosAlt.length;
+      const alt = titulosAlt[cliquesTitulo];
+      sobreTitulo.textContent = alt.t;
+      sobreDesc.textContent   = alt.d;
+    });
+  }
+
+  /* ============================================================
+     SENHA DO CONFIDENCIAL
+     ============================================================ */
+  function checarSenha(){
+    const inp = document.getElementById('senhaInput');
+    const msg = document.getElementById('senhaMsg');
+    if(!inp || !msg) return;
+
+    const val = inp.value.trim().toUpperCase();
+    if(val === 'SEMPAI'){
+      msg.style.color = '#008000';
+      msg.textContent = '✅ Senha correta...';
+      setTimeout(() => {
+        closeWindow('confidencial');
+        openWindow('revelado');
+      }, 500);
+    } else if(val === ''){
+      msg.style.color = '#a00';
+      msg.textContent = 'Digita alguma coisa, ora.';
+    } else {
+      msg.style.color = '#a00';
+      msg.textContent = 'Senha incorreta. Já jogou o Yume Navi?';
+    }
+  }
+  document.getElementById('btnSenha').addEventListener('click', checarSenha);
+  document.getElementById('senhaInput').addEventListener('keydown', e => {
+    if(e.key === 'Enter'){ e.preventDefault(); checarSenha(); }
+  });
+
+  /* ============================================================
+     YUME NAVI — Visual Novel
+     Senha final = "SEMPAI" (SE + MP + AI)
+     ============================================================ */
+
+  const personagens = [
+    {
+      nome: 'Yuki',
+      tipo: 'tsundere',
+      img: 'https://imgup.uk/proxy/?url=https://i.imgur.com/tUUZT7M.jpeg',
+      cor: '#d63384',
+      fala: '"B-baka! Não é como se eu quisesse te ajudar, tá? Mas... se acertar, eu te dou uma dica."',
+      pergunta: 'Qual dessas é a frase clássica de uma tsundere?',
+      opcoes: ['Baka!', 'Itadakimasu!', 'Yosh!'],
+      correta: 0,
+      fragmento: 'SE',
+      erro: 'N-não é isso, seu baka! Tenta de novo...'
+    },
+    {
+      nome: 'Hana',
+      tipo: 'yandere',
+      img: 'https://imgup.uk/proxy/?url=https://i.imgur.com/FWT0Go6.jpeg',
+      cor: '#8b008b',
+      fala: '"Hehe... se você errar, eu vou ficar muito triste. Você não quer me ver triste, né?"',
+      pergunta: 'O que é uma "yandere"?',
+      opcoes: ['Cozinheira dedicada', 'Apaixonada obsessiva e possessiva', 'Estudiosa tímida'],
+      correta: 1,
+      fragmento: 'MP',
+      erro: 'Hehe... errou. Vou fingir que não vi. Tenta de novo.'
+    },
+    {
+      nome: 'Rei',
+      tipo: 'kuudere',
+      img: 'https://imgup.uk/proxy/?url=https://i.imgur.com/eFbdQiG.jpeg',
+      cor: '#4682b4',
+      fala: '"... (ela te encara em silêncio, esperando sua resposta)"',
+      pergunta: 'O que significa "kuudere"?',
+      opcoes: ['Frio(a) e calmo(a) por fora', 'Barulhento(a) e agitado(a)', 'Chorão(ona) e dramático(a)'],
+      correta: 0,
+      fragmento: 'AI',
+      erro: '... (silêncio desapontador). Tenta de novo.'
+    }
+  ];
+
+  const yumeState = { atual: 0, obtidas: [] };
+
+  function yumeInventarioHtml(){
+    if(yumeState.obtidas.length === 0){
+      return '<p style="color:#606060; font-size:11px; margin:0;">Você ainda não coletou nenhum fragmento.</p>';
+    }
+    return '<div class="yume-inv">' +
+      yumeState.obtidas.map(f => '<span>' + escapeHtml(f) + '</span>').join('') +
+      '</div>';
+  }
+
+  function renderYume(){
+    const body = document.getElementById('yumeBody');
+    if(!body) return;
+
+    if(yumeState.atual >= personagens.length){
+      const todos = personagens.map(p => p.fragmento).join(' + ');
+      body.innerHTML =
+        '<div class="row" style="margin-bottom:14px;">' +
+          '<div class="big-glyph">💖</div>' +
+          '<div>' +
+            '<h3>Todas as peças coletadas!</h3>' +
+            '<p>Você juntou: <b>' + todos + '</b></p>' +
+            '<p>Agora junta as peças <b>na ordem em que conversou com cada garota</b> e digita na tela <b>Sōka Kikō Confidencial</b> (abre pelo menu Iniciar).</p>' +
+            '<p style="color:#606060; font-size:11px;">Dica: forma uma palavra japonesa muito conhecida, de 6 letras.</p>' +
+          '</div>' +
+        '</div>' +
+        '<div style="text-align:right;">' +
+          '<button class="btn" id="yumeReset">Jogar de novo</button>' +
+          '<button class="btn" data-close>Fechar</button>' +
+        '</div>';
+
+      const reset = document.getElementById('yumeReset');
+      if(reset) reset.addEventListener('click', () => {
+        yumeState.atual = 0;
+        yumeState.obtidas = [];
+        renderYume();
+      });
+      return;
+    }
+
+    const p = personagens[yumeState.atual];
+
+    body.innerHTML =
+      '<div class="sunken" style="padding:6px 8px; margin-bottom:10px;">' +
+        '<p style="margin:0; font-size:11px;"><b>Progresso:</b> ' +
+          yumeState.obtidas.length + ' / ' + personagens.length + ' fragmentos' +
+        '</p>' +
+      '</div>' +
+
+      '<div class="yume-perso">' +
+        '<div class="yume-avatar"><img src="' + p.img + '" alt="' + escapeHtml(p.nome) + '"></div>' +
+        '<div style="flex:1 1 auto;">' +
+          '<p class="yume-nome" style="color:' + p.cor + ';">' + p.nome +
+            ' <small style="color:#606060; font-weight:normal;">(' + p.tipo + ')</small>' +
+          '</p>' +
+          '<p style="margin:0;">' + p.fala + '</p>' +
+        '</div>' +
+      '</div>' +
+
+      '<div class="sunken" style="padding:10px;">' +
+        '<p style="margin:0;"><b>' + p.pergunta + '</b></p>' +
+        '<div class="yume-opcoes" id="yumeOpcoes">' +
+          p.opcoes.map((o, i) =>
+            '<button class="btn" data-opcao="' + i + '">' + escapeHtml(o) + '</button>'
+          ).join('') +
+        '</div>' +
+      '</div>' +
+
+      '<p id="yumeMsg" style="font-size:11px; margin:10px 0 0; min-height:16px;"></p>' +
+
+      '<div style="margin-top:10px;">' +
+        '<p style="margin:0 0 4px; font-size:11px;"><b>Fragmentos:</b></p>' +
+        yumeInventarioHtml() +
+      '</div>';
+
+    body.querySelectorAll('[data-opcao]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const idx = parseInt(btn.dataset.opcao, 10);
+        const msg = document.getElementById('yumeMsg');
+        if(idx === p.correta){
+          yumeState.obtidas.push(p.fragmento);
+          msg.style.color = '#008000';
+          msg.textContent = '✅ Você ganhou o fragmento: "' + p.fragmento + '" — seguindo adiante...';
+          btn.disabled = true;
+          body.querySelectorAll('[data-opcao]').forEach(b => b.disabled = true);
+          setTimeout(() => {
+            yumeState.atual++;
+            renderYume();
+          }, 1200);
+        } else {
+          msg.style.color = '#a00';
+          msg.textContent = '❌ ' + p.erro;
+        }
+      });
+    });
+  }
+
+  /* ---------- estado inicial ---------- */
+  openWindow('sobre');
+})();
+</script>
+</body>
+</html>
